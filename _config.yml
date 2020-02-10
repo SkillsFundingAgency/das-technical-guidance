@@ -1,0 +1,30 @@
+# Site settings
+title: Apprenticeship Service Working Practices
+email: dan.beavon@education.gov.uk
+description: > # this means to ignore newlines until "baseurl:"
+  Working Practices
+
+header_links:
+  GitHub: https://github.com/SkillsFundingAgency/das-technical-guidance
+
+# Build settings
+markdown: kramdown
+
+defaults:
+-
+  scope:
+    path: "principles"
+  values:
+    principle: true
+
+-
+  scope:
+    path: "standards"
+  values:
+    standard: true
+
+-
+  scope:
+    path: "Agile"
+  values:
+    wow: true
