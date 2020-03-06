@@ -26,19 +26,9 @@ and to run the site once it has been build we can use:
 
 ```sudo docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:3.8 jekyll serve```
 
-Once this is running we need to navigate to the Docker container in our browser for which we will need the IP address:
+To navigate to the built website enter the following in your browser:
 
- Find the ID of the Docker container which can be found using
-
- ```sudo docker ps -a```
-
-Find the IP address of the container using this command:
-
-```sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' bf1d3e2fd5c2```
-
-Enter the following in your browser
-
-```http://172.17.0.2:4000/```
+```http://0.0.0.0:4000/```
 
 
 ## Making changes
