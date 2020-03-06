@@ -14,7 +14,7 @@ They are guidance, not The Law - there will always be edge cases, but you should
 ### 1. Code should be correct, clear, concise - in that order
 
 Correct means provably correct - with tests. All fixes & new features should include tests to prevent regressions.
-Choose clarity over cleverness - avoid monkey-patching and meta-programming unless you have a very good reason not to.
+Choose clarity over cleverness.
 Don’t Repeat Yourself - The ‘[Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming))’ is a good approach to managing duplication. Less code is usually better - but not at the expense of clarity
 
 ### 2. Optimize for change
@@ -37,10 +37,9 @@ Comments are for explaining <strong>why</strong> something is needed, not how it
 Commit messages should follow [GDS guidance](https://github.com/alphagov/styleguides/blob/master/git.md)
 No-one cares how clever you are - it’s far more important to work well with your team
 APIs are interfaces too - Like any other interface, APIs need designing and iterating for usability
-Don’t pollute the global namespace
 
 ### 6. Think smaller
-Stick to the Single Responsibility Principle - keep view templates, controllers and model classes as simple as possible. Keep methods short. (Concepts and patterns which may help with this: Null Object pattern, Facade pattern, Form Objects, Sandi Metz’s “[Rules for Developers](https://robots.thoughtbot.com/sandi-metz-rules-for-developers)”)
+Stick to the Single Responsibility Principle - keep views, controllers and model classes as simple as possible. Keep methods short. (Concepts and patterns which may help with this: Null Object pattern, Facade pattern, Form Objects, Sandi Metz’s “[Rules for Developers](https://robots.thoughtbot.com/sandi-metz-rules-for-developers)”)
 A solution composed of many small simple things is usually better than one big complex thing.
 
 ### 7. Names have power. Use them wisely.
@@ -63,8 +62,16 @@ The larger the chunk of work you’re estimating, the more inaccurate you will b
 
 ### 1. Follow the Microsoft coding standards
 The Microsoft developed [Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions) were  developed to give a consistent look and feel to C# code so that readers can focus on the content and not the layout. This can help reduce the congitive over-head and enable readers to understand the code more quickly based on their previous experience.
-  
-### 2. Use static code analysis
+
+### 2. SOLID
+Follow [SOLID principles](https://en.wikipedia.org/wiki/SOLID). This will make code more understandable and easier to maintain
+* Single Responsibility - 
+* Open/Closed principle
+* Liskov Substitution
+* Interface Segregation
+* Dependency Inversion
+
+### 3. Use static code analysis
 To ensure that code meets the quality criteria of the Apprenticeship Service static code analysis via SonarCloud.io should be utilised and integrated into the build pipelines. The output of this analysis should be reviewed as part of the Code Review process and any issues rectified
 
 ## Testing-Specific Principles
@@ -89,7 +96,7 @@ When the work in the branch is complete create a pull request which can be revie
 When approving pull requests keep in mind the recommendations in the Coding Standards and ensure that any questionable code is challenged appropriately.
 
 ### 3. Delete branches once they are merged
-Once the PR is approved and you are merging back into the master branch ensure that the original branch is deleted. This prevents the repository becming littered with dead branches
+Once the PR is approved and you are merging back into the master branch ensure that the original branch is deleted. This prevents the repository becoming littered with dead branches
 
 ## Technical Debt Principles
 
@@ -99,3 +106,6 @@ Technical Debt should be logged (we curently use Jira to do this) and triaged ta
 
 ### 2. Ensure technical debt is communicated
 When the decision is made to accept technical debt ensure that the decision has been communicated to the relevant people so that it can be understood and prioritised.
+
+### 3. Dependancy management
+Each time a dependency is added to a project whether its an internal or external dependency a potential piece of tech-debt is added. Before a dependency is added it should be considered whether it is truely necessary and only added if the answer is yes.
