@@ -15,7 +15,8 @@ They are guidance, not The Law - there will always be edge cases, but you should
 
 Correct means provably correct - with tests. All fixes & new features should include tests to prevent regressions.
 Choose clarity over cleverness.
-Don’t Repeat Yourself - The ‘[Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming))’ is a good approach to managing duplication. Less code is usually better - but not at the expense of clarity
+Don’t Repeat Yourself - The ‘[Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming))’ is a good approach to managing duplication. Less code is usually better, but not at the expense of clarity - Clean Coding techniques can be used to ensure the code remains correct, clear and concise.
+Leave things better than you found them - Boyscout the code
 
 ### 2. Optimize for change
 Don’t try to solve every conceivable problem up-front, instead focus on making your code easy to change when needed
@@ -72,22 +73,22 @@ Follow [SOLID principles](https://en.wikipedia.org/wiki/SOLID). This will make c
 * Dependency Inversion
 
 ### 3. Use static code analysis
-To ensure that code meets the quality criteria of the Apprenticeship Service static code analysis via SonarCloud.io should be utilised and integrated into the build pipelines. The output of this analysis should be reviewed as part of the Code Review process and any issues rectified
+To ensure that code meets the quality criteria of the Apprenticeship Service static code analysis via SonarCloud.io should be utilised and integrated into the build pipelines. The output of this analysis should be reviewed as part of the Code Review process and any issues highlighted should be rectified
 
-## Testing-Specific Principles
+### 4. Code Reviews
+Ensure reviews are carried out on all code regardless of where the change originates. Also ensure the process is carried out with the appropriate riger and attention. Some things to keep in mind during the code review process:
 
-### 1. Write tests
+* Give reviews your full attention
+* Limit the amount of time you spend reviewing in any one sitting
+* If necessary check the code out and test it locally
+* Give constructive feedback
+* Consider including non-developers in the review process, they may pick up different issues
+* Do not merge code when there are unresolved comments or requests for change
 
-Always write tests for any code that you write. Besides giving developers confidence that the code works, the tests will give context that otherwise would be missing. This is especially valuable a few years down the road when all of the original developers have left the project.
+### 5. Test Driven Development
+Use test-driven development or [Behaviour Driven Development (BDD)](http://dannorth.net/introducing-bdd/) principles. It ensures that before you write your code that you have success criteria, and that your code is testable. It gives developers confidence that the code they have written works and the tests will give context that otherwise would be missing, this is especially valuable when the original developers have left the project.
 
-### 2. Use test-driven development or behaviour-driven development
-Use test-driven development or [Behaviour Driven Development (BDD)](http://dannorth.net/introducing-bdd/) if possible. It ensures that before you write your code that you have success criteria, and that your code is testable.
-
-### 3. Follow the testing pyramid
-The makes the point to write many low level unit tests, fewer integration tests, and even fewer acceptance tests
-![testing pyramid](./images/test-pyramid.png)
-
-## Code Branching Principles
+## Code Branching
 
 ### 1. Create a branch from master for each new piece of work
 When the work in the branch is complete create a pull request which can be reviewed.
@@ -98,11 +99,10 @@ When approving pull requests keep in mind the recommendations in the Coding Stan
 ### 3. Delete branches once they are merged
 Once the PR is approved and you are merging back into the master branch ensure that the original branch is deleted. This prevents the repository becoming littered with dead branches
 
-## Technical Debt Principles
+## Technical Debt
 
 ### 1. Logged technical debt 
-
-Technical Debt should be logged (we curently use Jira to do this) and triaged taking into account the effort to pay it back, the consequences and the risk. Then, depending on the identified severity taken directly into the appropriate team's backlog for completion or pushed into the Single Backlog where a larger impact on delivery is identified.
+Technical Debt should be logged (we currently use Jira to do this) and triaged taking into account the effort to pay it back, the consequences and the risk. Then, depending on the identified severity taken directly into the appropriate team's backlog for completion or pushed into the Single Backlog where a larger impact on delivery is identified.
 
 ### 2. Ensure technical debt is communicated
 When the decision is made to accept technical debt ensure that the decision has been communicated to the relevant people so that it can be understood and prioritised.
