@@ -1,5 +1,7 @@
 # das-technical-guidance
 
+[This documentation can be found here](https://skillsfundingagency.github.io/das-technical-guidance/)
+
 How we build and operate products at the Apprenticeship Service. This repo
 is inspired by (and steals shamelessly from) the [DfE Digital technical guidance](https://dfe-digital.github.io/technology-guidance/#dfe-digital-technical-guidance), [GDS Way](https://gds-way.cloudapps.digital) and the 
 [Ministry of Justice Technical Guidance](https://ministryofjustice.github.io/technical-guidance/#moj-technical-guidance)
