@@ -73,7 +73,7 @@ Follow [SOLID principles](https://en.wikipedia.org/wiki/SOLID). This will make c
 * Dependency Inversion
 
 ### 3. Use static code analysis
-To ensure that code meets the quality criteria of the Apprenticeship Service static code analysis via SonarCloud.io should be utilised and integrated into the build pipelines. The output of this analysis should be reviewed as part of the Code Review process and any issues highlighted should be rectified
+To ensure that code meets the quality criteria of the Apprenticeship Service static code analysis via [SonarCloud.io](http://SonarCloud.io) should be utilised and integrated into the build pipelines. The output of this analysis should be reviewed as part of the Code Review process and any issues highlighted should be rectified
 
 ### 4. Code Reviews
 Ensure reviews are carried out on all code regardless of where the change originates. Also ensure the process is carried out with the appropriate riger and attention. Some things to keep in mind during the code review process:
