@@ -18,5 +18,5 @@ title:  "Security Principles"
 10. [**Insufficient Logging & Monitoring**](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A10-Insufficient_Logging%252526Monitoring). Insufficient logging and monitoring, coupled with missing or ineffective integration with incident response, allows attackers to further attack systems, maintain persistence, pivot to more systems, and tamper, extract, or destroy data. Most breach studies show time to detect a breach is over 200 days, typically detected by external parties rather than internal processes or monitoring.
 
 # OWASP Secure Coding Guidelines
-
+Please see the [**OWASP Secure Coding Practices-Quick Reference Guide**](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/migrated_content)
 
