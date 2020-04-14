@@ -2,8 +2,16 @@
 layout: default
 title:  "Security Principles"
 ---
-# General Security Principles
+# Penetration Testing Process
+When a project is close to completion project managers will need to liase with the security team to arrange a penetration test. 
 
+PM's will need to fill out our scoping document which can be found at the following:
+Web application assessments
+API assessments
+
+- should the team require any clarification with regard to the content of the scoping form or need to confirm scope they can contact william.fieldhouse@education.gov.uk or samuel.nwaobia@education.gov.uk
+
+Once the scoping forms have been returned the security team may arrange for a walkthrough of the product to clarify scope.
 
 # OWASP Top Ten Web Application Security Risks
 1.  [**Injection**](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A1-Injection). Injection flaws, such as SQL, NoSQL, OS, and LDAP injection, occur when untrusted data is sent to an interpreter as part of a command or query. The attacker's hostile data can trick the interpreter into executing unintended commands or accessing data without proper authorization.
