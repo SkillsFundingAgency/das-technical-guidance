@@ -9,7 +9,7 @@ DM's will need to fill out the scoping document which can be found at the follow
 Web application assessments
 API assessments
 
-Should the team require any clarification with regard to the content of the scoping form or need to confirm scope they can contact security.apprentice@education.gov.uk
+Should the team require any clarification with regard to the content of the scoping form or need to confirm scope they can contact the security team for assisstance.
 
 Once the scoping forms have been returned the security team may arrange for a walkthrough of the product to clarify scope.
 
