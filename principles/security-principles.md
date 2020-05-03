@@ -6,8 +6,8 @@ title:  "Security Principles"
 When a project is close to completion delivery managers will need to liase with the security team to arrange a penetration test. 
 
 DM's will need to fill out the scoping document which can be found at the following links:
-[Web application assessments](https://github.com/SkillsFundingAgency/das-technical-guidance/blob/security-principles-update/principles/scoping_documents/Web_App_Scoping_Questionnaire%20(3).docx)
-API assessments
+1. [Web application assessments](https://github.com/SkillsFundingAgency/das-technical-guidance/blob/security-principles-update/principles/scoping_documents/Web_App_Scoping_Questionnaire%20(3).docx)
+2. [API assessments] (principles/scoping_documents/API_Scoping_Questionnaire (1).docx)
 
 Should the team require any clarification with regard to the content of the scoping form or need to confirm scope they can contact the security team for assisstance.
 
