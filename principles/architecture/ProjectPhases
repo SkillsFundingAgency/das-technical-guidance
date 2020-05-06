@@ -1,0 +1,28 @@
+# Project Phases
+
+This page details the architecture expectations for each implementation phase of a project.
+
+## Discovery
+Assets which show the following
+* Understanding the business problem
+* Understanding of the current technical capabilities
+..* Diagram of the technical landscape for this domain
+* Alpha backlog (Epics)
+
+## Alpha
+Assets which show the following
+* A business description of the problem domain
+..* This must focus on understanding all of the services outside of the Apprenticeship Service
+* A logical diagram of all systems involved in the problem (including external systems)
+* Description of Alpha technical goals
+..* This must include a list of the technology problem that are being tested in Alpha
+* Beta high level technical product backlog (Epics)
+
+Integration catalog (Technical)
+* Understanding of the systems and technologies involved in the Beta build
+
+## Beta
+//todo
+
+## Go-Live
+//todo
