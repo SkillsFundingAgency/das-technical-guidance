@@ -2,6 +2,17 @@
 layout: default
 title:  "Security Principles"
 ---
+# When is a Penetration Test Required?
+1. For every new project that has not yet been tested previously
+2. Whenever an existing project has new dynamic code added or an alteration on existing functionality, e.g:
+ - a new input field.
+ - an alteration on the way an input field is handled
+
+# When is a Penetration Test Not Required?
+1. For existing projects that with new minor static alterations, e.g:
+ - Changing some existing written content on the web application
+ - Changing a title from H1 to H2
+
 # Penetration Testing Process
 When a project is close to completion delivery managers will need to liase with the security team to arrange a penetration test. 
 
@@ -14,6 +25,18 @@ Should the team require any clarification with regard to the content of the scop
 Once the scoping forms have been returned the security team may arrange for a walkthrough of the product to clarify scope.
 
 When testing is complete the the delivery manager will receive an encrypted penetration testing report, which can then be distributed to their team as they see fit.
+
+# Types of Penetration Testing
+- Web Application 
+- API
+- Network
+
+# Tools Used For Penetration Testing
+Typical tools used when conducting a penetration test are:
+- BurpSuite (Web application)
+- Nikto (Web Server)
+- GoBuster, Dirbuster, Dirb (Web application directory brute forcing)
+- Nessus (Network with some web app scannning functionality)
 
 # OWASP Top Ten Web Application Security Risks
 1.  [**Injection**](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A1-Injection). Injection flaws, such as SQL, NoSQL, OS, and LDAP injection, occur when untrusted data is sent to an interpreter as part of a command or query. The attacker's hostile data can trick the interpreter into executing unintended commands or accessing data without proper authorization.
