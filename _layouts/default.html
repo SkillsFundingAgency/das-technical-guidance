@@ -40,19 +40,32 @@
 
       <div class="app-pane__body" data-module="in-page-navigation">
         <div class="app-pane__toc">
+          
           <div class="toc" data-module="table-of-contents">
+            
             <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
             <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
               {% include toc.html html=content %}
             </nav>
-          </div>
+          </div>         
         </div>
 
         <div class="app-pane__content toc-open-disabled">
           <main id="content" class="technical-documentation" data-module="anchored-headings">
             {{ content }}
-          </main>
 
+            {% if page.area %}
+            <hr />
+            <h3>Further Topics</h3>
+            {% for p in site[page.area] %}
+            {% if p.title != page.title %}
+              <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+                <a href="{{ p.url }}"> {{ p.title }}</a>
+              </nav>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </main>
           {% include footer.html %}
         </div>
       </div>
