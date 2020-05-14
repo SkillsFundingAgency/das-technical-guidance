@@ -1,3 +1,5 @@
 # Ignore Jekyll built site 
 _site
 .sass-cache
+
+.vscode/

@@ -10,6 +10,12 @@ header_links:
 # Build settings
 markdown: kramdown
 
+collections_dir: collections
+
+collections:
+  development:
+    output: true
+
 defaults:
 -
   scope:
