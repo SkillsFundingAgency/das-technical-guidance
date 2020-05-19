@@ -25,7 +25,7 @@ There are many blogs, books and courses on DevOps, and the CAMS model is often w
 
 ## Culture
 
-The purpose of DevOps in the Apprenticeship service is to bring unity among the teams so that they all work as a single entity to achieve a goal or rollout new features and services. Working together creates a positive attitude and in turn improves the overall environment for the teams to work in. This enables continuous learning and sharing of skills. All this leads to efficient and innovative development and delivery. These are some of the cultural advantages DevOps provides for the service:
+The purpose of DevOps in the Apprenticeship Service is to bring unity among the teams so that they all work as a single entity to achieve a goal or rollout new features and services. Working together creates a positive attitude and in turn improves the overall environment for the teams to work in. This enables continuous learning and sharing of skills. All this leads to efficient and innovative development and delivery. These are some of the cultural advantages DevOps provides for the service:
 
 - **Agile ways of working.** Across the service we perform daily collaboration through Agile ceremonies; sprint planning, daily standup, sprint reviews and retrospectives. Support and trust are key to our ways of working which helps enable our continuous delivery. There are also other ceremonies that bring all of the teams together such as the Scrum of Scrums, Clan Leads meeting, Architecture board, Quality Guild and a regular service wide standup.
 
@@ -33,9 +33,9 @@ The purpose of DevOps in the Apprenticeship service is to bring unity among the 
 
 ## Automation
 
-This is the most vital factor of the DevOps culture. The purpose of automation is to build a system such that it eliminates various human errors and can fix errors and repeating the successful process again without any sort of intervention or delays. Automation greatly improves the workflow and productivity of the service. 
+This is the most vital factor of the DevOps culture. The purpose of automation is to build a system that eliminates various human errors and provide a successful repeating process with no manual intervention required. Automation greatly improves the workflow and productivity of the service. 
 
-- **Infrastructure as Code (IaC).** IaC is an infrastructure management approach that makes continuous delivery and DevOps possible. Without IaC, our developers and engineers would have to treat each target environment individually, which becomes a tedious task as we have different environments for development, testing, and production use. We include the Azure Resource Manager (ARM) templates and Azure DevOps build definitions along side each an applications repository in GitHub, this is to match the development lifecycle of an application. As application requirements change, so can the build and release along side it. 
+- **Infrastructure as Code (IaC).** IaC is an infrastructure management approach that makes continuous delivery and DevOps possible. Without IaC, our developers and engineers would have to treat each target environment individually, which becomes a tedious task as we have different environments for development, testing, and production use. We include the Azure Resource Manager (ARM) templates and Azure DevOps build definitions along side an applications codebase in the GitHub repository, this is to match the development lifecycle of an application. As application requirements change, so can the build and release along side it. 
 
 - **Cloud infrastructure.** We are a cloud first service as it provides the flexibility, toolsets, and scalability required. All our architectures rely on PaaS solutions. Through IaC and continuous integration and continuous deployment (CI/CD) we can quickly deploy infrastructure and ensure there is no environment or configuration drift. Builds can be deployed to each environment providing consistant dev/test and production environments. It enables our teams to test applications in production-like environments early in the development cycle.
 
