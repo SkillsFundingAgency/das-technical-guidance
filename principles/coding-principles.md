@@ -18,18 +18,19 @@ Correct means provably correct - with tests. All fixes & new features should inc
 Choose clarity over cleverness.
 * Don’t Repeat Yourself - The ‘[Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming))’ is a good approach to managing duplication. 
 * Less code is usually better, but not at the expense of clarity - Clean Coding techniques can be used to ensure the code remains correct, clear and concise.
-* Leave things better than you found them - Boyscout the code
+* Leave things better than you found them - boyscout the code
 * Follow [SOLID principles](https://en.wikipedia.org/wiki/SOLID). This will make code more understandable and easier to maintain
 
 ### 2. Optimize for change
-Don’t try to solve every conceivable problem up-front, instead focus on making your code easy to change when needed.
-Don’t prematurely optimize - choose clarity over performance, unless there is a serious performance issue that needs to be addressed.
+Focus on making your code easy to change rather than attempting to predict what changes will be required.
 
 ### 3. Early optimisation is overkill
-Don’t over-engineer. Follow the principle of Least Surprise. Choose process
-concurrency over threading & let the O/S handle it, unless there is good reason.
-When you do use threading, use language abstractions to help. Don’t roll your
-own crypto. Handle exceptions at the app level, no lower.
+Don’t over-engineer or prematurely optimize and follow the [principle of Least Surprise](https://en.wikipedia.org/wiki/Principle_of_least_astonishment)  For instance:
+* Choose process concurrency over threading & let the O/S handle it, unless there is good reason.
+* When you do use threading, use language abstractions to help. 
+* Handle exceptions at the app level, no lower.
+* Don't role you own crypto.
+* Choose clarity over performance, except when there is a serious performance issue that needs to be addressed.
 
 ### 4. Everything fails, all of the time.
 Accept this and [code defensively](https://en.wikipedia.org/wiki/Defensive_programming) when calling other services.
