@@ -29,7 +29,7 @@ Don’t over-engineer or prematurely optimize and follow the [principle of Least
 * Choose process concurrency over threading & let the O/S handle it, unless there is good reason.
 * When you do use threading, use language abstractions to help. 
 * Handle exceptions at the app level, no lower.
-* Don't role you own crypto.
+* Don't roll you own crypto.
 * Choose clarity over performance, except when there is a serious performance issue that needs to be addressed.
 
 ### 4. Everything fails, all of the time.
