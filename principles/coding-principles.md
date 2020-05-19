@@ -22,7 +22,7 @@ Choose clarity over cleverness.
 * Follow [SOLID principles](https://en.wikipedia.org/wiki/SOLID). This will make code more understandable and easier to maintain
 
 ### 2. Optimize for change
-Don’t try to solve every conceivable problem up-front, instead focus on making your code easy to change when needed
+Don’t try to solve every conceivable problem up-front, instead focus on making your code easy to change when needed.
 Don’t prematurely optimize - choose clarity over performance, unless there is a serious performance issue that needs to be addressed.
 
 ### 3. Early optimisation is overkill
@@ -33,12 +33,12 @@ own crypto. Handle exceptions at the app level, no lower.
 
 ### 4. Everything fails, all of the time.
 Accept this and [code defensively](https://en.wikipedia.org/wiki/Defensive_programming) when calling other services.
-Every HTTP call could error or hang - handle failures appropriately and fail fast. Don’t let long-running external calls impact your user experience.
+Every HTTP call could error or hang, every message could deadletter - handle failures appropriately and fail fast. Don’t let long-running external calls impact your user experience.
 
 ### 5. Show, don't tell
 If you have to explain how your code works, then your code is not clear enough.
 Comments are for explaining <strong>why</strong> something is needed, not how it works.
-Commit messages should follow [GDS guidance](https://github.com/alphagov/styleguides/blob/master/git.md)
+Commit messages should follow [GDS guidance](https://www.gov.uk/service-manual/technology/maintaining-version-control-in-coding#writing-commit-messages)
 No-one cares how clever you are - it’s far more important to work well with your team
 APIs are interfaces too - Like any other interface, APIs need designing and iterating for usability
 
@@ -49,7 +49,7 @@ A solution composed of many small simple things is usually better than one big c
 ### 7. Names have power. Use them wisely.
 Don’t be cute or jokey when naming things
 Names convey meaning - well-named functions & variables can remove the need for a comment
-Avoid meaningless names like ‘obj’ / ‘result’ / ‘foo’.
+Avoid meaningless names like ‘obj’, ‘result’, ‘foo’.
 Use single-letter variables only where the letter represents a well-known mathematical property (e.g. e = mc^2), or where their meaning is otherwise clear.
 
 See [Naming things]({{ 'standards/naming-things' | relative_url  }})
@@ -65,7 +65,7 @@ The larger the chunk of work you’re estimating, the more inaccurate you will b
 Use [Test-driven Development](https://en.wikipedia.org/wiki/Test-driven_development) or [Behaviour Driven Development (BDD)](http://dannorth.net/introducing-bdd/) principles. It ensures that before you write your code that you have success criteria, and that your code is testable. It gives developers confidence that the code they have written works and the tests will give context that otherwise would be missing, this is especially valuable when the original developers have left the project.
 
 ### 11. Create a useful README
-Each project should enable new users to get up-to-speed as quickly as possible. A comprehensive README should explain how a project should be set up configured and run as well as give a background of the goals driving it. Rather than being a static document the README should evolve as the project evolves.
+Each project should enable new users to get up-to-speed as quickly as possible. A comprehensive README should explain how a project should be set up, configured and run as well as give a background of the goals driving it. Rather than being a static document the README should evolve as the project evolves.
 
 ## C#-Specific Principles
 
