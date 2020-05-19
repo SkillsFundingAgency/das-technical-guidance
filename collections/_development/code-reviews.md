@@ -16,4 +16,4 @@ Code reviews are an essential part of the development process and must be carrie
 * Do not merge code when there are unresolved comments or requests for change
 * * Code merging in the main is a responsibility of the Quality Assurance team and will performed after review from the Product Owner
 
-[The GDS Way - Code Reviews](ds-way.cloudapps.digital/manuals/code-review-guidelines.html)
+[The GDS Way - Code Reviews](http://gds-way.cloudapps.digital/manuals/code-review-guidelines.html)
