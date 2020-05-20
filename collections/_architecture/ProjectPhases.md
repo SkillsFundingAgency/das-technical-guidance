@@ -1,6 +1,7 @@
 ---
 layout: default
-title:  "Architectual - Project Phases"
+title:  "Project Phases"
+category: architecture
 ---
 # Project Phases
 
@@ -30,11 +31,11 @@ Assets describing the following are required through this phase
 * A business description of the proposed beta solution including any MVS version outlines
 * Logical business systems diagram
 * High level business requirements/user needs
-  * Should only be 5-6 of these as defined byt he project
-* Integration catalog (technical)
+  * Should only be 5-6 of these as defined by the project
+* Integration catalogue (technical)
   * Diagram showing the technical system and their specific integration points
-  * Description of the technical implementation of each of th integrations
-* Solution Components tehcnical descrription
+  * Description of the technical implementation of each of the integrations
+* Solution Components technical description
   * Technologies
   * Patterns
 * Non-functional requirements of the service
@@ -50,7 +51,7 @@ Assets describing the following are required through this phase
 * Information showing any issues with the MVS product
 * Information about how the product will mature
 * Technical dashboard showing service performance (this should be created/maintained by the team not architect)
-* Input into teh CI readiness plan/pack
+* Input into the CI readiness plan/pack
 
 
 

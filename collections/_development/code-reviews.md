@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Code Reviews"
-area: development
+category: development
 ---
 
 # Code Reviews

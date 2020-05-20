@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Static Code Analysis"
-area: development
+category: development
 permalink: /development/static-code-analysis/
 ---
 

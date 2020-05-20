@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Coding Principles"
-area: development
+category: development
 ---
 
 # Coding Principles

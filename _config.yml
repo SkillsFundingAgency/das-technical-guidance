@@ -16,6 +16,9 @@ collections:
   development:
     output: true
 
+  architecture:
+    output: true
+
 defaults:
 -
   scope:
