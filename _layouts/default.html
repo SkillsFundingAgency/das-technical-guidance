@@ -45,6 +45,29 @@
             
             <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
             <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+
+              {% assign principles = site.pages | where: "principle", true %}
+              {% for principle in principles %}
+                {% if principle.category and principle.category == page.category %}
+                <h3>Category Topics</h3>
+                <ul>
+                  <li>
+                    <ul>
+                      <li>
+                        <a href="{{ principle.url }}">{{ principle.title | capitalize }}</a>
+                        <ul>
+                          {% for p in site[page.category] %}
+                            <li><a href="{{ p.url }}"> {{ p.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <hr />
+                {% endif %}
+              {% endfor %}
+
               {% include toc.html html=content %}
             </nav>
           </div>         
@@ -53,18 +76,6 @@
         <div class="app-pane__content toc-open-disabled">
           <main id="content" class="technical-documentation" data-module="anchored-headings">
             {{ content }}
-
-            {% if page.area %}
-            <hr />
-            <h3>Further Topics</h3>
-            {% for p in site[page.area] %}
-            {% if p.title != page.title %}
-              <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
-                <a href="{{ p.url }}"> {{ p.title }}</a>
-              </nav>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
           </main>
           {% include footer.html %}
         </div>

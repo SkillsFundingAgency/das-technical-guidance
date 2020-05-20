@@ -1,9 +1,10 @@
 ---
 layout: default
-title:  "Architectual Principles"
+title:  "Architectural Principles"
+category: architecture
 ---
 
-# Architectual Practices
+# Architectural Practices
 
 ## Introduction
 These pages give advice on the common approaches that we take across the Apprenticeship service. It will detail what approaches should be taken and why.

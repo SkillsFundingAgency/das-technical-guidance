@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Code Branching"
-area: development
+category: development
 ---
 
 # Code Branching

@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Technical Debt"
-area: development
+category: development
 ---
 
 ## Technical Debt
