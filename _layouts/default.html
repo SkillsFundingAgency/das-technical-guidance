@@ -54,10 +54,10 @@
                   <li>
                     <ul>
                       <li>
-                        <a href="{{ principle.url }}">{{ principle.title | capitalize }}</a>
+                        <a href="{{ principle.url | relative_url }}">{{ principle.title | capitalize }}</a>
                         <ul>
                           {% for p in site[page.category] %}
-                            <li><a href="{{ p.url }}"> {{ p.title }}</a></li>
+                            <li><a href="{{ p.url | relative_url }}"> {{ p.title }}</a></li>
                           {% endfor %}
                         </ul>
                       </li>
