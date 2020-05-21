@@ -99,15 +99,15 @@ Manual Quality Assurance activities will be performed on both UI and API for eac
   
 ### Test Automation
 
-**Must follow the ‘[Coding Principles](https://skillsfundingagency.github.io/das-technical-guidance/principles/coding-principles.html#coding-principles)’ defined for automation coding**
-
 ![testing pyramid](./images/test-pyramid.png)
 
   * Unit Tests
   * Integration Tests
   * API Tests
   * UI Tests
-  
+
+  **NOTE: Test automation code must follow the [Coding Principles](https://skillsfundingagency.github.io/das-technical-guidance/principles/coding-principles.html#coding-principles)**
+ 
 ## Test Patterns
   * UI Testing
   * API Testing
