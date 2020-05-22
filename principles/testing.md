@@ -95,7 +95,7 @@ Manual Quality Assurance activities will be performed on both UI and API for eac
 ### Manual Testing
   * Positive Testing
   * Negative Testing
-  * Exploraroty Testing
+  * Exploratory Testing
   
 ### Test Automation
 
@@ -106,7 +106,7 @@ Manual Quality Assurance activities will be performed on both UI and API for eac
   * API Tests
   * UI Tests
 
-  **NOTE: Test automation code must follow the [Coding Principles](https://skillsfundingagency.github.io/das-technical-guidance/principles/coding-principles.html#coding-principles)**
+  **NOTE: Test automation code must follow the [Coding Principles]({{ 'development/coding-principles' | relative_url  }})**
  
 ## Test Patterns
   * UI Testing
