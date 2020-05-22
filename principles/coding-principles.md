@@ -2,6 +2,7 @@
 layout: default
 title:  "Coding Principles"
 category: development
+permalink: /development/coding-principles
 ---
 
 # Coding Principles
