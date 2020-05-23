@@ -11,7 +11,7 @@ title:  "DevOps Principles"
 
 > DevOps is the union of people, process, and products to enable continuous delivery of value to our end users.
 
-We follow this ethos to ensure delivery of value to all of the Digital Apprenticeship Service users, internal and external. It is a combination of the passion, hard work and process that enables DevOps culture within the service. The continuous set of processes that we follow forms the methodology for our Agile planning and continuous delivery, for example aligned sprints across all teams.
+We follow this ethos to ensure delivery of value to all of the Apprenticeship Service users, internal and external. It is a combination of the passion, hard work and process that enables DevOps culture within the service. The continuous set of processes that we follow forms the methodology for our Agile planning and continuous delivery, for example aligned sprints across all teams.
 
 Adhering to DevOps provides the service with the following benefits:
 
