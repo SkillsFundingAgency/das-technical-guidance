@@ -13,7 +13,7 @@ title:  "DevOps Principles"
 
 We follow this ethos to ensure delivery of value to all of the Digital Apprenticeship Service users, internal and external. It is a combination of the passion, hard work and process that enables DevOps culture within the service. The continuous set of processes that we follow forms the methodology for our Agile planning and continuous delivery, for example aligned sprints across all teams.
 
-Adhereing to DevOps provides the service with the following benefits:
+Adhering to DevOps provides the service with the following benefits:
 
 - **Speed and quality.** DevOps speeds up our releases using continuous delivery, encouraging faster feedback, and allowing our developers to fix bugs in the system in the early stages. We can focus on the quality of the services we build and automate processes.
 
