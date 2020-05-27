@@ -22,8 +22,8 @@ The core objective of this Quality Assurance (QA) strategy is to design a high l
 
 The technical testing approach to automation prioritises areas of User Interface (UI) and the Application Programming Interface (API) / Service Layer that deliver relevant coverage holistically across the product surface. The test automation includes creating tests for each User Story/ Use Case and developing the automation code for each test, executing and maintaining the framework.
 
-**UI Automation:** The UI testing framework is implemented using a TDA (Technical Design Authority) approved DOTNET Core framework with Selenium via a standard C#/Spreflow project.
-**API Automation:** The API test automation is currently being planned, but no automation framework is in place. However, Manual API testing is carried usaing Postman, RestClient etc tools
+* **UI Automation:** The UI testing framework is implemented using a TDA (Technical Design Authority) approved DOTNET Core framework with Selenium via a standard C#/Spreflow project
+* **API Automation:** The API test automation is currently being planned, but no automation framework is in place. However, Manual API testing is carried usaing Postman, RestClient etc tools
 
 ## Testing Stages
 
@@ -52,30 +52,6 @@ Manual Quality Assurance activities will be performed on both UI and API for eac
 * Product development team will be responsible for the full End-To-End testing foe every modification and each release
 * Along with that Acceptance Testing team (Model Office) will perform additional end-to-end testing coverinf the business scenarios for every major release
 
-### Non-Functional Testing:
-* Performance Testing:
-  - UI: A dedicated **TrueClient (Load Runner)** performance testing framework being used to conduct Application performance testing, which supports conducting different types of performance tests, including Load test, Stress test and Soak test
-  - Currently Performacne Testing is out of scope for Product Testing team, this is being handled by a Performance team at program level.
-  - The product testing team will be responsible for identifying and planning Performance testing requirements for each modification
-  - Detailed performance testing will be carried out for every major release and provide reports
-  
-* Accessibility Testing:
-  - API: Accessibility testing of the API is out of scope
-  - UI: Web accessibility testing is a subset of usability testing, which aims to discover how easily people can use a website considering the users with disabilities that affects how they use web
-  - The testing team will be responsible to conduct/organise high-level accessibility testing using tools approved by TDA and provide reports for every release
-  - 'SortSite' accessibility tool will be used to carry out semi- automated accessibility evaluation which checks the markup validity of Web document in HTML, XHTML and CSS
-  - Manual Keyboard accessibility will be conducted to verify user navigation without having to use a mouse
-  - Apprenticeship Service also has an external service provider (das - digital accessibility centre) to carry out a full Accessibility Evaluation againt the industry standards and provides the reports. The product team is responsible for planning and organising this service via Test Lead.
-
-* Security Testing:
-  - Currently Security Testing is out of scope for Product Testing team, this is being handled by a Security team at program level.
-  - The product testing team will be responsible for identifying and planning Security testing requirements for each modification
-  - Detailed performance testing will be carried out for every major release and provide report
-
-* Unit Testing:
-  - Delivery of unit tests (and potentially TDD) are out scope for the product test team, these areas are undertaken by the development team.
-  - The product test team will be required to review unit tests (through colloboration with Developers) to help determine coverage from functional automation perspective.
-
 ### System Testing:
   - System testing will focus on the functionality of the application and will verify the correctness of the newly designed features/fixes and their iterations with the existing functions.
   - Testing will be accomplished through an organised testing process that will have repeatable tests.
@@ -89,6 +65,30 @@ Manual Quality Assurance activities will be performed on both UI and API for eac
 ### User Acceptance Testing:
   - UAT is out of scope for the product test team.
   - Model Office team will perform additional tests to verify the product fits the purpose from Service E2E point of view
+
+### Non-Functional Testing:
+#### Performance Testing:
+  - UI: A dedicated **TrueClient (Load Runner)** performance testing framework being used to conduct Application performance testing, which supports conducting different types of performance tests, including Load test, Stress test and Soak test
+  - Currently Performacne Testing is out of scope for Product Testing team, this is being handled by a Performance team at program level.
+  - The product testing team will be responsible for identifying and planning Performance testing requirements for each modification
+  - Detailed performance testing will be carried out for every major release and provide reports
+  
+#### Accessibility Testing:
+  - API: Accessibility testing of the API is out of scope
+  - UI: Web accessibility testing is a subset of usability testing, which aims to discover how easily people can use a website considering the users with disabilities that affects how they use web
+  - The testing team will be responsible to conduct/organise high-level accessibility testing using tools approved by TDA and provide reports for every release
+  - 'SortSite' accessibility tool will be used to carry out semi- automated accessibility evaluation which checks the markup validity of Web document in HTML, XHTML and CSS
+  - Manual Keyboard accessibility will be conducted to verify user navigation without having to use a mouse
+  - Apprenticeship Service also has an external service provider (das - digital accessibility centre) to carry out a full Accessibility Evaluation againt the industry standards and provides the reports. The product team is responsible for planning and organising this service via Test Lead.
+
+#### Security Testing:
+  - Currently Security Testing is out of scope for Product Testing team, this is being handled by a Security team at program level.
+  - The product testing team will be responsible for identifying and planning Security testing requirements for each modification
+  - Detailed performance testing will be carried out for every major release and provide report
+
+#### Unit Testing:
+  - Delivery of unit tests (and potentially TDD) are out scope for the product test team, these areas are undertaken by the development team.
+  - The product test team will be required to review unit tests (through colloboration with Developers) to help determine coverage from functional automation perspective.
   
 ## Testing Techniques
   
