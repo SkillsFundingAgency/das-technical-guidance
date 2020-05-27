@@ -15,48 +15,6 @@ title:  "Quality Assurance"
 
 # Quality Assurance Principles
 
-  ## Testing Stages
-
-  ![Testing Stages](./images/TestingStages.png)
-
-  ### Functional
-    * Unit Testing
-    * Integration Testing
-    * End-to-End Testing
-    * System Testing
-    * Interface Testing
-
-  ### Non-Functional
-    * Performance Testing
-    * Security Testing
-    * Accessibility Testing
-
-  ### User Acceptance Testing
-  
-  ## Testing Techniques
-  
-  ### Manual Testing
-    * Positive Testing
-    * Negative Testing
-    * Exploraroty Testing
-  
-  ### Test Automation
-
-  ![testing pyramid](./images/test-pyramid.png)
-
-    * Unit Tests
-    * Integration Tests
-    * API Tests
-    * UI Tests
-  
-  
-  ## Test Patterns
-    * UI Testing
-    * API Testing
-    * Database Testing
-
-# Test Plan
-
 ## Scope and Approach:
 This document defines a high-level Test Plan of Apprenticeship Service for all non developer actioned testing. The document includes references to 'the product testing team' comprised of personnel from product development team and Integration/User Acceptance testing team. The entire product development/testing team and application integrator team has a collective responsibility for quality (i.e. product is fit for purpose) from development onwards. The Test Plan is being suitably implemented in context, and in an efficient and cost-effective manner (e.g. using an automation framework and approach that enables testers to test). The test effort will be prioritised and executed based on the project priorities. This is a living document that may be refined as the project progresses. The QA Manager, Test Team Lead, Product Owner and Delivery Manager shall review and approve the final version of the Test Strategy document.
 
@@ -66,6 +24,10 @@ The technical testing approach to automation prioritises areas of User Interface
 
 **UI Automation:** The UI testing framework is implemented using a TDA (Technical Design Authority) approved DOTNET Core framework with Selenium via a standard C#/Spreflow project.
 **API Automation:** The API test automation is currently being planned, but no automation framework is in place. However, Manual API testing is carried usaing Postman, RestClient etc tools
+
+## Testing Stages
+
+![Testing Stages](./images/TestingStages.png)
 
 ### Functional Testing:
 Manual Quality Assurance activities will be performed on both UI and API for each user story, using the following checklist:-
@@ -127,6 +89,29 @@ Manual Quality Assurance activities will be performed on both UI and API for eac
 ### User Acceptance Testing:
   - UAT is out of scope for the product test team.
   - Model Office team will perform additional tests to verify the product fits the purpose from Service E2E point of view
+  
+## Testing Techniques
+  
+### Manual Testing
+  * Positive Testing
+  * Negative Testing
+  * Exploratory Testing
+  
+### Test Automation
+
+![testing pyramid](./images/test-pyramid.png)
+
+  * Unit Tests
+  * Integration Tests
+  * API Tests
+  * UI Tests
+
+  **NOTE: Test automation code must follow the [Coding Principles]({{ 'development/coding-principles' | relative_url  }})**
+ 
+## Test Patterns
+  * UI Testing
+  * API Testing
+  * Database Testing
 
 ## Entry & Exit Criteria:
 

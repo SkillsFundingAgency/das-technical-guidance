@@ -24,7 +24,7 @@ To build the site locally using Jekyll we can use the following Docker Command f
 
 ```sudo docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build```
 
-and to run the site once it has been build we can use:
+to run the site locally from the root git directory we can use:
 
 ```sudo docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:3.8 jekyll serve```
 
@@ -39,8 +39,7 @@ To make changes, edit the appropriate Markdown files in this project.
 Jekyll (and therefore this site) uses [kramdown][] for its Markdown
 processing.
 
-Make sure to make changes in a branch, and issue a pull request when
-you want them to be reviewed and published.
+Make sure to make any changes in a branch, and to create a pull request for review.
 
 [kramdown]: https://kramdown.gettalong.org/syntax.html
 
