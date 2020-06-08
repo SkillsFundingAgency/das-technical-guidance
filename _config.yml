@@ -13,9 +13,12 @@ markdown: kramdown
 collections_dir: collections
 
 collections:
-  development:
+  api_standards:
     output: true
 
+  development:
+      output: true
+  
   architecture:
     output: true
 

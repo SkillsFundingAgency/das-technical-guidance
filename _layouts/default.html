@@ -46,15 +46,21 @@
             <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
             <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
 
-              {% assign principles = site.pages | where: "principle", true %}
-              {% for principle in principles %}
-                {% if principle.category and principle.category == page.category %}
-                <h3>Category Topics</h3>
+              {% assign principlePages = site.pages | where: "principle", true %}
+              {% assign standardPages = site.pages | where: "standard", true %}
+              {% assign parentPages = principlePages | concat: standardPages %}
+              {% assign displayedMenu = false %}
+              {% for parentPage in parentPages %}
+                {% if parentPage.category and parentPage.category == page.category %}
+                {% if displayedMenu == false %}
+                  <h3>Category Topics</h3>
+                  {% assign displayedMenu = true %}
+                  {% endif %}
                 <ul>
                   <li>
                     <ul>
                       <li>
-                        <a href="{{ principle.url | relative_url }}">{{ principle.title | capitalize }}</a>
+                        <a href="{{ parentPage.url | relative_url }}">{{ parentPage.title | capitalize }}</a>
                         <ul>
                           {% for p in site[page.category] %}
                             <li><a href="{{ p.url | relative_url }}"> {{ p.title }}</a></li>
@@ -64,9 +70,11 @@
                     </ul>
                   </li>
                 </ul>
-                <hr />
                 {% endif %}
               {% endfor %}
+              {% if displayedMenu == true %}
+                <hr />
+              {% endif %}
 
               {% include toc.html html=content %}
             </nav>
