@@ -32,14 +32,28 @@ There are multiple ways of specifying versioning, and there is no right or wrong
 |---|---|---|
 |URI path|`GET /api/v2/users`|Easy to implement, but... implies different resources (as opposed to version of a resource), is more work for client to upgrade, and versions the entire API in one go (rather than offering a more nuanced approach)|
 |URI query string|`GET /api/users?v=2`|Does not seem a natural or RESTful way of versioning|
-|Custom header|`GET /api/users`<br />`Content-Type: application/json`<br />`X-Version: 2`|Introducing a new header (which is not part of core the HTTP standard) does not seem logical.|
-|Media Type|`GET /api/users`<br />`Accept: application/json;version=2`<br /><br />`POST /api/users`<br />`Content-Type: application/json;version=2`<br />`Content-Length:12`<br />`Hello there!`|A core part the HTTP approach, and RESTful in its nature.  This is our preferred approach.  This strategy can make the API harder to consume for simple script clients, but most AS APIs are NOT consumed from simple scripting languages (thus, this is less of an issue).|
+|Custom header|`GET /api/users`<br />`Content-Type: application/json`<br />`X-Version: 2`|Introducing a new header (which is not part of core the HTTP standard) does not seem natural, however, **versioning on HTTP Header is the best of the options supported by Azure API Management - so is selected for use with the Apprenticeship Service**.|
+|Media Type|`GET /api/users`<br />`Accept: application/json;version=2`<br /><br />`POST /api/users`<br />`Content-Type: application/json;version=2`<br />`Content-Length:12`<br />`Hello there!`|A core part the HTTP approach, and RESTful in its nature.  This is our preferred approach, however, it is not supported by the API Management platform, so we are unable to use it.|
 
-### Media Type versioning in .netcore
+### Versioning by HTTP Header in .netcore
 
-.netcore provides API versioning out of the box.  Simply add the the [Microsoft.AspNetCore.Mvc.Versioning]( https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) package to your API project.  The package supports a variety of versioning strategies, [and support is provided for versioning by media-type](https://github.com/microsoft/aspnet-api-versioning/wiki/Versioning-by-Media-Type).  The .netcore versioning approach can be used to version individual actions or entire controllers.  The approach is suitable for scenarios where version changes are of simple to medium complexity.
+.netcore provides API versioning out of the box.  Simply add the the [Microsoft.AspNetCore.Mvc.Versioning]( https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) package to your API project.  The package supports a variety of versioning strategies (all those above), but on the service we should only use the HTTP Header strategy.  The .netcore versioning approach can be used to version individual actions or entire controllers.  You can enable HTTP Header versioning by adding the following into your `startup.cs ConfigureServices()` method.
+
+    services.AddApiVersioning(opt => {
+        opt.ApiVersionReader = new HeaderApiVersionReader("X-Version");
+    });
+
+_Note_ the use of the custom header `X-Version` in the configuration.  The API consumer must include this header in the request, setting it to the version they wish to consume.  For example;
+
+    GET https://your-domain.net/api/YourResource HTTP/1.1
+    Host: your-domain.net
+    X-Version: 2
+
+The approach of versioning within a single code base / deployment is suitable for scenarios where version changes are of simple to medium complexity.  
 
 In some cases, a new API version will be significantly different to its predecessor, and maintaining the two side-by-side in the same deployed code base may be an issue.  In these cases, it will be necessary to implement an alternative approach, potentially using a policy within APIM to route requests to different deployed versions of the API.  In such cases, the delivery team are advised to liaise with the Architect associated with the project, (or the central Architect group if one is not specifically allocated to the project).  It is the Architects responsibility to explore options and liaise with DevOps and the Quality Guild as appropriate in order to agree an approach.
+
+_Note_ your API must provide a separate swagger endpoint for each version of the API it implements.
 
 ### Making non-breaking changes to your API
 
