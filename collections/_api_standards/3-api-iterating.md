@@ -32,7 +32,7 @@ There are multiple ways of specifying versioning, and there is no right or wrong
 |---|---|---|
 |URI path|`GET /api/v2/users`|Easy to implement, but... implies different resources (as opposed to version of a resource), is more work for client to upgrade, and versions the entire API in one go (rather than offering a more nuanced approach)|
 |URI query string|`GET /api/users?v=2`|Does not seem a natural or RESTful way of versioning|
-|Custom header|`GET /api/users`<br />`Content-Type: application/json`<br />`X-Version: 2`|Introducing a new header (which is not part of core the HTTP standard) does not seem natural, however, **versioning on HTTP Header is the best of the options supported by Azure API Management - so is selected for use with the Apprenticeship Service**.|
+|Custom header|`GET /api/users`<br />`Content-Type: application/json`<br />`X-Version: v2`|Introducing a new header (which is not part of core the HTTP standard) does not seem natural, however, **versioning on HTTP Header is the best of the options supported by Azure API Management - so is selected for use with the Apprenticeship Service**.|
 |Media Type|`GET /api/users`<br />`Accept: application/json;version=2`<br /><br />`POST /api/users`<br />`Content-Type: application/json;version=2`<br />`Content-Length:12`<br />`Hello there!`|A core part the HTTP approach, and RESTful in its nature.  This is our preferred approach, however, it is not supported by the API Management platform, so we are unable to use it.|
 
 ### Versioning by HTTP Header in .netcore
