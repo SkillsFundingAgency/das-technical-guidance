@@ -30,7 +30,7 @@ New solutions should always use the latest version of the framework which is in 
 * Agree the extra work to upgrade with your Delivery Team. If they are not supportive ask them to speak to the Developer Clan Lead to discuss their objections. It may then be raised with the Quality Guild to gain wider opinions if necessary.
 * Upgrade the solution
 * Liase with Dev Ops to undertake any work required on the build/release pipelines
-* Test thoroughly locally
+* Thoroughly test the solution in your local environment, ensuring all unit tests and any integration tests pass
 * Ensure that the solution is thoroughly regression tested
 
 ### Framework replacements
