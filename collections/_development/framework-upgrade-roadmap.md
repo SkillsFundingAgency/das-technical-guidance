@@ -14,7 +14,7 @@ New solutions should always use the latest version of the framework which is in 
 
 ### When to upgrade
 
-* As soon as an application is undergoing significant development
+* When an application is undergoing significant development
 * When there is a team in place to support testing of the upgrade
 * When the new version of the framework is no longer in preview
 
