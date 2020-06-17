@@ -27,7 +27,7 @@ New solutions should always use the latest version of the framework which is in 
 ### Upgrade process
 
 * Speak to Dev Ops - this first step in the process should always be to engage the Dev Ops team.  If you're the first person to implement the new version then additional work may be required for the Dev Ops team which will need to be planned.
-* Agree the work with your PO and DM.  If they aren't supportive then speak to either the Dev Lead, Tech Lead or Quality Guild.
+* Agree the extra work to upgrade with your Delivery Team. If they are not supportive ask them to speak to the Developer Clan Lead to discuss their objections. It may then be raised with the Quality Guild to gain wider opinions if necessary.
 * Upgrade the solution
 * Liase with Dev Ops to undertake any work required on the build/release pipelines
 * Test thoroughly locally
