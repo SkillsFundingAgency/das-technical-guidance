@@ -10,7 +10,7 @@ There is always the temptation to utilise the latest versions of the frameworks 
 
 ### New solutions
 
-New solutions should always use the latest version of the framework which is in Long Term Support.
+New solutions should always use the latest version of the framework which is in Long Term Support.  Releases which are not covered by Long Term Support are only supported for three months after a subsequent Current or LTS release which, if we were to use none LTS releases, could lead to a lot of our applications running on an unsupported version of the framework even if it had been upgraded relatively recently.
 
 ### When to upgrade
 
