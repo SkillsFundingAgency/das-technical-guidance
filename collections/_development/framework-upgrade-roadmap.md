@@ -6,7 +6,7 @@ category: development
 
 ## Framework Upgrades
 
-There is always a clamour to utilise the latest versions of the frameworks we use to develop applications but it is important that a process is followed to ensure we don't increase the burden of supporting multiple different framework versions unnecessarily.  We should be in a position where by applications which are actively being developed are upgraded to the latest framework version as a matter of course.
+There is always the temptation to...
 
 ### New solutions
 
