@@ -21,7 +21,7 @@ New solutions should always use the latest version of the framework which is in 
 ### When not to upgrade
 
 * When the new framework version is not covered by Long Term Support. Details of the versions covered by LTS can be found on the [Microsoft website](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)
-* When the application is dormant or changes are very minor and infrequent
+* When the application is in the maintenance phase of its life-cycle, or when changes to it are very minor and infrequent
 * When the application is due to be decommissioned
 
 ### Upgrade process
