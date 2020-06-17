@@ -31,7 +31,7 @@ New solutions should always use the latest version of the framework which is in 
 * Upgrade the solution
 * Liase with Dev Ops to undertake any work required on the build/release pipelines
 * Test thoroughly locally
-* Execute thorough regression testing
+* Ensure that the solution is thoroughly regression tested
 
 ### Framework replacements
 
