@@ -22,6 +22,9 @@ collections:
   architecture:
     output: true
 
+  development_standards:
+    output: true
+
 defaults:
 -
   scope:
