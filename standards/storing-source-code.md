@@ -39,9 +39,7 @@ At a minimum the repository should:
     - require pull requests reviews
     - require status checks on commits
 - receive [dependabot alerts and security updates]{:target="_blank"}
-- assign the following teams accessassign the das-contributor team as write
-- assign the DevOps team as admin
-- assign the Security team as reader
+- assign the das-contributor team write access
 - include a webhook to receive notifications of repository vulnerability alerts
 - make use of:
     - the [CODEOWNERS]{:target="_blank"} file which should be updated regularly as the team responsible for maintaining the repository changes
