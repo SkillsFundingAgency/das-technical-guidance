@@ -30,6 +30,30 @@ Ask your delivery manager to request you being added to the Github organisation.
 Repositories should be [clearly named]({{ '/standards/naming-things' | relative_url }}),
 and have an [appropriate licence]({{ '/standards/licencing-software-or-code' | relative_url }})
 and enough documentation that someone new can get started with the
-project.
+project. They should be initialised using the [das-github-template]{:target="_blank"} (WIP) (see: [creating a repository from a template]{:target="_blank"} and contain code that will be built and deployed through a single build and release pipeline. 
+
+At a minimum the repository should:
+
+- not be a fork
+- use [branch protection rules]{:target="_blank"} that
+    - require pull requests reviews
+    - require status checks on commits
+- receive [dependabot alerts and security updates]{:target="_blank"}
+- assign the following teams accessassign the das-contributor team as write
+- assign the DevOps team as admin
+- assign the Security team as reader
+- include a webhook to receive notifications of repository vulnerability alerts
+- make use of:
+    - the [CODEOWNERS]{:target="_blank"} file which should be updated regularly as the team responsible for maintaining the repository changes
+    - [gitignore]{:target="_blank"} file to keep the repository free from temporary local files and artifacts
 
 Private repositories are not a good way to protect secrets, and should only be used where access to the code might reveal draft policy decisions.  Secrets should be managed at the platform level.
+
+If a repository becomes redundant and the codebase is no longer in use or required then it should be archived for # months before it is deleted altogether. This should be done following agreement with relevant parties.
+
+[das-github-template]: https://github.com/SkillsFundingAgency/das-github-template
+[creating a repository from a template]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
+[branch protection rules]:https://help.github.com/en/github/administering-a-repository/configuring-protected-branches
+[dependabot alerts and security updates]: https://help.github.com/en/github/administering-a-repository/managing-security-and-analysis-settings-for-your-repository#enabling-or-disabling-security-and-analysis-features
+[CODEOWNERS]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+[gitignore]: https://git-scm.com/docs/gitignore
