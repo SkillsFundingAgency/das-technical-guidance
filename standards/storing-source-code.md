@@ -33,13 +33,13 @@ If a repository becomes redundant and the codebase is no longer in use or requir
 
 Repositories:
 
-|Requirement| Description                     | Additional Notes
+|Requirement|Description|Additional Notes
 |:-:| - | - |
 |Should|be [clearly named]({{ '/standards/naming-things' |relative_url }})||
 |Should|have an [appropriate licence]({{ '/standards/licencing-software-or-code' | relative_url }})|a software license tells others what they can and can't do with the source code|
 |Should|be well documented in the README file|there should be enough documentation that someone new can get started with the project|
 |Should|be initialised using the [das-github-template]{:target="_blank"} (WIP) |(see: [creating a repository from a template]{:target="_blank"}) ensures new repositories include relevant folder structures, files and licence information|
-|Should|be built and deployed through a single build and release pipeline|improves maintanability|
+|Should|be built and deployed through a single build and release pipeline|improves maintainability|
 |Should|use [branch protection rules]{:target="_blank"} that require pull requests|notifies team members of code changes and improves code quality and standardisation through code reviews|
 |Should|use [branch protection rules]{:target="_blank"} that require status checks on commits|helps to maintain code quality by ensuring it is built and tested in the existing pipeline|
 |Should|receive [dependabot alerts and security updates]{:target="_blank"}|improves visibility of vulnerabilities in custom code and dependant packages|
