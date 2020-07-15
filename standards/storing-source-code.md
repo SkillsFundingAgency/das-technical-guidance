@@ -29,19 +29,27 @@ Ask your delivery manager to request you being added to the Github organisation.
 
 Private repositories are not a good way to protect secrets, and should only be used where access to the code might reveal draft policy decisions. Secrets should be managed at the platform level.
 
-If a repository becomes redundant and the codebase is no longer in use or required then it should be archived for # months before it is deleted altogether. This should be done following agreement with relevant parties.
+If a repository becomes redundant and the codebase is no longer in use or required then it should be archived using the following guideline before deletion:
+
+|Repository Type | Archive Duration | Recovery after Deletion
+|:-:| - | - |
+| Public | 12 months | 90 days |
+| Private | 6 months | 90 days |
+
+Archiving of repostiories should be completed following agreement with the relevant parties.
 
 Repositories:
 
 |Requirement|Description|Additional Notes
 |:-:| - | - |
-|Should|be [clearly named]({{ '/standards/naming-things' |relative_url }})||
-|Should|have an [appropriate licence]({{ '/standards/licencing-software-or-code' | relative_url }})|a software license tells others what they can and can't do with the source code|
-|Should|be well documented in the README file|there should be enough documentation that someone new can get started with the project|
-|Should|be initialised using the [das-github-template]{:target="_blank"} (WIP) |(see: [creating a repository from a template]{:target="_blank"}) ensures new repositories include relevant folder structures, files and licence information|
+|Should|be [clearly named](/standards/naming-things){:target="_blank"}||
+|Should|have an [appropriate licence](/standards/licencing-software-or-code){:target="_blank"}|a software license tells others what they can and can't do with the source code|
+|Should|be well documented in the [README file](/principles/coding-principles#11-create-a-useful-readme){:target="_blank"}|there should be enough documentation that someone new can get started with the project|
+|Should|be initialised using the [das-github-template]{:target="_blank"} |(see: [creating a repository from a template]{target="_blank"}) ensures new repositories include relevant folder structures, files and licence information|
 |Should|be built and deployed through a single build and release pipeline|improves maintainability|
 |Should|use [branch protection rules]{:target="_blank"} that require pull requests|notifies team members of code changes and improves code quality and standardisation through code reviews|
 |Should|use [branch protection rules]{:target="_blank"} that require status checks on commits|helps to maintain code quality by ensuring it is built and tested in the existing pipeline|
+|Should|use [branch protection rules]{:target="_blank"} that require [SonarCloud Code Analysis](/development/static-code-analysis/#static-code-analysis){:target="_blank"}|helps to maintain code quality by using our chosen cloud native static code analysis tool. |
 |Should|receive [dependabot alerts and security updates]{:target="_blank"}|improves visibility of vulnerabilities in custom code and dependant packages|
 |Should|assign the das-contributor team write access|ensures the relevant people have access to the repository|
 |Should|include a webhook to receive notifications of repository vulnerability alerts|increases visibility of security and vulnerability alerts|
