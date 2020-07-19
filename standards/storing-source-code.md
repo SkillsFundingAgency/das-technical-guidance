@@ -36,7 +36,7 @@ If a repository becomes redundant and the codebase is no longer in use or requir
 | Public | 12 months | 90 days |
 | Private | 6 months | 90 days |
 
-Archiving of repostiories should be completed following agreement with the relevant parties.
+Archiving of repositories should be completed following agreement with the relevant parties.
 
 Repositories:
 
@@ -45,7 +45,7 @@ Repositories:
 |Should|be [clearly named](/standards/naming-things){:target="_blank"}||
 |Should|have an [appropriate licence](/standards/licencing-software-or-code){:target="_blank"}|a software license tells others what they can and can't do with the source code|
 |Should|be well documented in the [README file](/principles/coding-principles#11-create-a-useful-readme){:target="_blank"}|there should be enough documentation that someone new can get started with the project|
-|Should|be initialised using the [das-github-template]{:target="_blank"} |(see: [creating a repository from a template]{target="_blank"}) ensures new repositories include relevant folder structures, files and licence information|
+|Should|be initialised using the [das-github-template]{:target="_blank"} |(see: [creating a repository from a template]{:target="_blank"}) ensures new repositories include relevant folder structures, files and licence information|
 |Should|be built and deployed through a single build and release pipeline|improves maintainability|
 |Should|use [branch protection rules]{:target="_blank"} that require pull requests|notifies team members of code changes and improves code quality and standardisation through code reviews|
 |Should|use [branch protection rules]{:target="_blank"} that require status checks on commits|helps to maintain code quality by ensuring it is built and tested in the existing pipeline|
