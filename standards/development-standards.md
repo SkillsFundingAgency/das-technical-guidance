@@ -17,11 +17,10 @@ This guide provides the standards which are to be applied to any new application
 |Ensure consistency across solutions |Provide a consistent _Apprenticeship Service_ structure to applications that will feel familiar to all developers on the Apprenticeship Service||
 |Allow us to build performant, scalable and secure applications and services|Use industry best practices and engineering patterns that are proven to create fast, scalable and secure applications and services||
 
-## Sections
 
 The guide is split into the following sections.
 
 |Section|Description|
 |---|---|
 |[Solution structure and layout]({{ 'development_standards/solution-structure' | relative_url }})|Describes how new application solutions should be structured|
-|[Engineering Patterns]({{ 'development_standards/patterns' | relative_url }})|Describes the development patterns that are currently in use|
+|[Development Patterns]({{ 'development_standards/patterns' | relative_url }})|Describes the development patterns that are currently in use|

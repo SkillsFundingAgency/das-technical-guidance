@@ -16,6 +16,8 @@ The use of Orchestrators can also make a codebase more testable by moving logic 
 
 ![Orchestrator Overview](./images/OrchestratorOverview.png)
 
+#### References
+
 * [simplify-your-architecture-using-the-orchestrator-pattern](http://www.jamiemaguire.net/index.php/2017/05/06/simplify-your-architecture-using-the-orchestrator-pattern/)
 * [orchestrator-pattern](http://www.michaeltaylorp3.net/orchestrator-pattern/)
 * [never-mind-the-controller-here-is-the-orchestrator](https://www.simple-talk.com/dotnet/asp-net/never-mind-the-controller-here-is-the-orchestrator/)
@@ -39,6 +41,8 @@ Securing a task based write operation such as 'Book Ticket' may be easier than c
 
 Another positive side-effects of using CQRS is that there are naturally less merging issues when working in a team as the codebase is broken into smaller, more cohesive chunks.
 
+#### References
+
 * [CQRS - Microsoft](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 * [CQRS - Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
 
@@ -47,6 +51,8 @@ Another positive side-effects of using CQRS is that there are naturally less mer
 With the mediator pattern, communication between objects is encapsulated within a mediator object and do not communicate directly with each other, but instead communicate through the mediator. This reduces the dependencies between communicating objects and reduces coupling.
 
 `How do Mediator and Orchestrator work together and also there's this:` [mediatr-didnt-run-over-dog.html](http://scotthannen.org/blog/2020/06/20/mediatr-didnt-run-over-dog.html)
+
+#### References
 
 * [simplifying-development-and-separating-concerns-with-mediatr](https://blogs.msdn.microsoft.com/cdndevs/2016/01/26/simplifying-development-and-separating-concerns-with-mediatr/)
 * [thin-controllers-cqrs-mediatr](https://codeopinion.com/thin-controllers-cqrs-mediatr/)
