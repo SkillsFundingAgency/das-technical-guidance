@@ -8,7 +8,7 @@ category: development_standards
 
 ### Onion Architecture
 
-The [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) was proposed by Jeffrey Palermo in 2008 to produce more maintainable applications by emphasizing the separation of concerns throughout a system. Similar to the [Hexagon Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) it forces the externalization of infrastructure, the use of interfaces for behaviour contracts and forcing dependencies to only "move" in one direction, toward the centre and the Domain Model. In the Onion architecture the edges of the onion are where the most change is likely to happen and where tight coupling would be most difficult to manage. It contains the UI, Tests and Infrastructure. 
+The [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) was proposed by Jeffrey Palermo in 2008 to produce more maintainable applications by emphasizing the separation of concerns throughout a system. Similar to [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) it forces the externalization of infrastructure, the use of interfaces for behaviour contracts and describing dependencies that only "flow" in one direction, toward the centre and the Domain Model. In the Onion architecture the edges of the onion are where the most change is likely to happen and is where the UI, Tests and Infrastructure is found. 
 
 ![](images/OnionArchitecture.png)
 
@@ -40,67 +40,6 @@ Limitations:
 
 ### Solution Structure and Layout
 
-One Application project per functional area/Bounded Context
+TODO:- Create a Visual Studio Template of what a *standard* Apprenticeship Service solution should be. 
 
-<pre>
-Solution  
-
-  Application BoundedContext   
-
-    Commands   
-
-      [Task]
-
-        Command -> POCO class that represents a task that has to be performed such as a user action.     
-
-        CommandHandler -> Takes an instance of a command and does the actual work.     
-
-        Validator -> Simple validator that determines if the command contains valid data.   
-
-    DataEntities   
-
-    Queries    
-
-      [Task]
-
-        Query -> Takes an instance of a Request and returns a Response     
-
-        Request -> POCO class     
-
-        Response -> POCO class   
-
-    ViewData  
-
-    Interfaces -> Interfaces for Infrastructure Sevices like Logging and Email   
-
-    Services -> Internal logic used by multiple Commands/Queries   
-
-    Errors -> Exceptions   
-
-    Mappers -> Internal mapping between DTOs that cross the boundaries of Infrastructure/Application and Application/Domain  
-
-  ApplicationTests   
-
-    CommandHandler   
-
-    QueryHandler  
-
-  Data [There could be many of these]  
-
-  Domain  
-
-  Web   
-
-    Controllers   
-
-    Views   
-
-    ViewModels   
-
-    Orchestrators (1 per Controller)  
-
-  WebTests
-
-    Orchestrators
-
-</pre>
+The [das-reservations](https://github.com/SkillsFundingAgency/das-reservations) codebase is a great example of how to structure an Apprenticeship Service codebase
