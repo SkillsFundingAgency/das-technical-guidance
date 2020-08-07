@@ -112,6 +112,12 @@ Another positive side-effects of using CQRS is that there are naturally less mer
 
 #### Example Command
 
+    public class RateProductCommand
+    {
+        public int UserId { get; set; }
+        public int Rating { get; set; }
+    }
+
     public class RateProductCommandHandler : ICommandHandler<RateProductCommand>
     {
         private readonly IRepository<Product> repository;
