@@ -10,18 +10,87 @@ Below are described the major engineering patterns currently in-use across the S
 
 ### Orchestrator
 
+> At times an orchestrator may be unnecessary for a light weight controller action and it may be easier and less complex to omit the orchestrator completely and instead inject Mediatr directly into the controller.
+
 As controllers age they are asked to do more and more work which can result in serious bloat. We want to keep our controllers focused on what they should be doing such as handling requests, invoking business rules and returning responses. So to keep them light we need to hand-off any other work that may end up in a controller out to somewhere else and the Orchestrator can be used to fill this need. 
 
 The use of Orchestrators can also make a codebase more testable by moving logic and flow out of controllers and their tight coupling to the runtime.
 
 ![Orchestrator Overview](./images/OrchestratorOverview.png)
 
+#### Example
+
+    public class ProductsController : Controller
+    {
+        private readonly IProductOrchestrator _orchestrator;
+
+        public ProductsController(IProductOrchestrator orchestrator)
+        {
+            _orchestrator = orchestrator;
+        }
+        
+        public ActionResult Index()
+        {
+            var productsResult = _orchestrator.GetProducts();
+
+            return View(new ProductsModel
+            {
+                Products = productsResult.Products
+            });
+        }
+    }
+
+    public class ProductOrchestrator : IProductOrchestrator
+    {
+        private readonly IMediator _mediator;
+
+        public ProductOrchestrator(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+        
+        public IList<Product> GetProducts()
+        {
+            return = _mediator.Send(new GetProductsQuery());            
+        }
+    }
+
+
 #### References
 
-* [simplify-your-architecture-using-the-orchestrator-pattern](http://www.jamiemaguire.net/index.php/2017/05/06/simplify-your-architecture-using-the-orchestrator-pattern/)
-* [orchestrator-pattern](http://www.michaeltaylorp3.net/orchestrator-pattern/)
-* [never-mind-the-controller-here-is-the-orchestrator](https://www.simple-talk.com/dotnet/asp-net/never-mind-the-controller-here-is-the-orchestrator/)
+* [Simplify Your Architecture Using the Orchestrator Pattern](http://www.jamiemaguire.net/index.php/2017/05/06/simplify-your-architecture-using-the-orchestrator-pattern/)
+* [The Orchestrator Pattern](http://www.michaeltaylorp3.net/orchestrator-pattern/)
+* [Never Mind the Controller, Here is the Orchestrator](https://www.simple-talk.com/dotnet/asp-net/never-mind-the-controller-here-is-the-orchestrator/)
   
+### Mediator
+
+With the mediator pattern, communication between objects is encapsulated within a mediator object and do not communicate directly with each other, but instead communicate through the mediator. This reduces the dependencies between communicating objects and reduces coupling.
+
+#### Example
+
+    public class ProductController : Controller
+    {
+        private readonly IMediator _mediator;
+
+        public ProductsController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        public ActionResult Rate(RateProduct rateProduct)
+        {
+            _mediator.Send(new RateProductCommand(rateProduct));
+            return View();
+        }
+    }    
+
+#### References
+
+* [Thin Controllers with CQRS & Mediatr](https://codeopinion.com/thin-controllers-cqrs-mediatr/)
+* [Simplify Your Controllers With the Command Pattern and Mediatr](https://jonhilton.net/2016/06/06/simplify-your-controllers-with-the-command-pattern-and-mediatr/)
+* [Mediatr Criticism](http://scotthannen.org/blog/2020/06/20/mediatr-didnt-run-over-dog.html)
+
 
 ### Command Query Responsibility Segregation (CQRS)
 
@@ -41,21 +110,53 @@ Securing a task based write operation such as 'Book Ticket' may be easier than c
 
 Another positive side-effects of using CQRS is that there are naturally less merging issues when working in a team as the codebase is broken into smaller, more cohesive chunks.
 
+#### Example Command
+
+    public class RateProductCommandHandler : ICommandHandler<RateProductCommand>
+    {
+        private readonly IRepository<Product> repository;
+
+        public ProductsCommandHandler (IRepository<Product> repository)
+        {
+            this.repository = repository;
+        }
+
+        public async Task Handle (RateProductCommand command)
+        {
+            var product = repository.Find(command.ProductId);
+            if (product != null)
+            {
+                product.RateProduct(command.UserId, command.Rating);
+                repository.SaveAsync(product);
+            }
+        }
+    }
+
+#### Example Query
+
+    public class GetProductsQueryHandler : IQueryHandler<GetProductEntitiesRequest, GetProductsEntitiesResponse>
+    {
+        private readonly IQueryRepository<ProductDto> _repository;
+
+        public GetProductsQueryHandler(IQueryRepository<ProductDto> repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<GetProductsEntitiesResponse> Handle(GetProductEntitiesRequest query)
+        {
+            var products = await _repository.GetList();
+
+            var response = new GetProductsEntitiesResponse
+            {
+                Products = products
+            };
+
+            return response;
+        }
+    }
+
 #### References
 
 * [CQRS - Microsoft](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 * [CQRS - Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
-
-### Mediator
-
-With the mediator pattern, communication between objects is encapsulated within a mediator object and do not communicate directly with each other, but instead communicate through the mediator. This reduces the dependencies between communicating objects and reduces coupling.
-
-`How do Mediator and Orchestrator work together and also there's this:` [mediatr-didnt-run-over-dog.html](http://scotthannen.org/blog/2020/06/20/mediatr-didnt-run-over-dog.html)
-
-#### References
-
-* [simplifying-development-and-separating-concerns-with-mediatr](https://blogs.msdn.microsoft.com/cdndevs/2016/01/26/simplifying-development-and-separating-concerns-with-mediatr/)
-* [thin-controllers-cqrs-mediatr](https://codeopinion.com/thin-controllers-cqrs-mediatr/)
-* [simplify-your-controllers-with-the-command-pattern-and-mediatr](https://jonhilton.net/2016/06/06/simplify-your-controllers-with-the-command-pattern-and-mediatr/)
-
-
