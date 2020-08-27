@@ -179,7 +179,7 @@ Using a managed identity allows an application to authenticate to any service th
 * Acquiring a bearer token for an API behund Azure AD authentication
 * Connecting to a SQL database
 
-The Microsoft.Azure.Services.AppAuthentication library manages authentication automatically
+The ```Microsoft.Azure.Services.AppAuthentication``` library manages authentication automatically
 
 #### Example - Acquiring a bearer token
 
