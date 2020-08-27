@@ -169,3 +169,47 @@ Another positive side-effects of using CQRS is that there are naturally less mer
 
 * [CQRS - Microsoft](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 * [CQRS - Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
+
+
+### Managed Identities (MI)
+
+Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.
+
+* Secretless configuration
+* Acquiring a bearer token for an API behund Azure AD authentication
+* Connecting to a SQL database
+
+The Microsoft.Azure.Services.AppAuthentication library manages authentication automatically
+
+#### Example - Acquiring a bearer token
+
+    var identifier = # IdentifierUri of Azure AD App registration
+
+    public async Task<string> GetAccessTokenAsync(string identifier)
+    {
+        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+        var accessToken = await azureServiceTokenProvider.GetAccessTokenAsync(identifier);
+        
+        return accessToken;
+    }
+
+#### Example - Connectiong to a SQL database
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var connectionString = "Server=tcp:<server-name>,1433;Initial Catalog=<database-name>;"
+        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+
+        var connection = new SqlConnection
+        {
+            ConnectionString = connectionString,
+            AccessToken = azureServiceTokenProvider.GetAccessTokenAsync("https://database.windows.net/").Result
+        };
+        optionsBuilder.UseSqlServer(connection);
+    }
+
+#### References
+
+* [MI Overview - Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
+* [MI Obtain tokens for Azure resources - Microsoft](https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity?tabs=dotnet#asal)
+* [MI Connecting to a SQL database - Microsoft](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-connect-msi)
