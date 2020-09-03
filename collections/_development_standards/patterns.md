@@ -181,16 +181,33 @@ Using a managed identity allows an application to authenticate to any service th
 
 The ```Microsoft.Azure.Services.AppAuthentication``` library manages authentication automatically
 
-#### Example - Acquiring a bearer token
+#### Example - Authenticating with another app service, eg internal API
 
-    var identifier = # IdentifierUri of Azure AD App registration
-
-    public async Task<string> GetAccessTokenAsync(string identifier)
+    public class ApiClient
     {
-        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-        var accessToken = await azureServiceTokenProvider.GetAccessTokenAsync(identifier);
-        
-        return accessToken;
+        private readonly HttpClient _httpClient;
+
+        public ApiClient(IHttpClientFactory httpClientFactory) {
+            _httpClient = httpClientFactory.CreateClient();
+        }
+
+        public async Task<string> GetAccessTokenAsync(string identifier)
+        {
+            var azureServiceTokenProvider = new AzureServiceTokenProvider();
+            var accessToken = await azureServiceTokenProvider.GetAccessTokenAsync(identifier);
+            
+            return accessToken;
+        }
+
+        # Acquire a bearer token
+        var identifier = "https://tenant.onmicrosoft.com/das-env-api-as-ar" # IdentifierUri of Azure AD App registration
+        var accessToken = await GetAccessTokenAsync(identifier);
+
+        # Add the token as a header
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+        # Make an API call
+        var response = await _httpClient.GetAsync("https://azurewebsites.net/resource/resourceid");
     }
 
 #### Example - Connectiong to a SQL database
