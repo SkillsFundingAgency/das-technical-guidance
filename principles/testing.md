@@ -120,7 +120,7 @@ The entry criteria or the actions required before test activities can commence a
   * User story or task is accepted into the sprint
   * BA will have produced acceptance criteria or TDD/BDD scenarios for the story/technical task accepted
   * Story/task has been completed i.e. developed, reviewed and is passing all unit tests (Meeting developer definition of done)
-  * Feature Branch aligned with MASTER Branch without any conflicts 
+  * Feature Branch aligned with MASTER Branch without any conflicts
   * Verify code review completed and no conflicts
 
 ### Exit:
