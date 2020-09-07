@@ -62,9 +62,11 @@ The use of Orchestrators can also make a codebase more testable by moving logic 
 * [The Orchestrator Pattern](http://www.michaeltaylorp3.net/orchestrator-pattern/)
 * [Never Mind the Controller, Here is the Orchestrator](https://www.simple-talk.com/dotnet/asp-net/never-mind-the-controller-here-is-the-orchestrator/)
   
-### Mediator
+### The Mediator Pattern & Mediatr
 
 With the mediator pattern, communication between objects is encapsulated within a mediator object and do not communicate directly with each other, but instead communicate through the mediator. This reduces the dependencies between communicating objects and reduces coupling.
+
+> When seeking to use the Mediatr pattern you should look to use it as a mechanism to decouple the different application layers and resist the urge to use it as a code-reuse pattern for which other approaches are more appropriate.
 
 #### Example
 
@@ -87,6 +89,7 @@ With the mediator pattern, communication between objects is encapsulated within 
 
 #### References
 
+* [Mediatr - GitHub](https://github.com/jbogard/MediatR)
 * [Thin Controllers with CQRS & Mediatr](https://codeopinion.com/thin-controllers-cqrs-mediatr/)
 * [Simplify Your Controllers With the Command Pattern and Mediatr](https://jonhilton.net/2016/06/06/simplify-your-controllers-with-the-command-pattern-and-mediatr/)
 * [Mediatr Criticism](http://scotthannen.org/blog/2020/06/20/mediatr-didnt-run-over-dog.html)
