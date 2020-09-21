@@ -210,21 +210,6 @@ The ```Microsoft.Azure.Services.AppAuthentication``` library manages authenticat
         var response = await _httpClient.GetAsync("https://azurewebsites.net/resource/resourceid");
     }
 
-#### Example - Connectiong to a SQL database
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var connectionString = "Server=tcp:<server-name>,1433;Initial Catalog=<database-name>;"
-        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-
-        var connection = new SqlConnection
-        {
-            ConnectionString = connectionString,
-            AccessToken = azureServiceTokenProvider.GetAccessTokenAsync("https://database.windows.net/").Result
-        };
-        optionsBuilder.UseSqlServer(connection);
-    }
-
 #### References
 
 * [MI Overview - Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
