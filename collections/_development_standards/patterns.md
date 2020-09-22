@@ -176,7 +176,7 @@ Another positive side-effects of using CQRS is that there are naturally less mer
 Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.
 
 * Secretless configuration
-* Acquiring a bearer token for an API behund Azure AD authentication
+* Acquiring a bearer token for an API behind Azure AD authentication
 * Connecting to a SQL database
 
 The ```Microsoft.Azure.Services.AppAuthentication``` library manages authentication automatically
