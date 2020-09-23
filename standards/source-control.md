@@ -5,19 +5,15 @@ title:  "Source Control"
 
 # Source Control
 
-All our source code is [open by default](https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable), and stored on well-known,
-public code hosting services. At the Apprenticeship Service, we use [GitHub](https://www.gov.uk/service-manual/technology/maintaining-version-control-in-coding).
+At the Apprenticeship Service all our source code is [open by default](https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable), and stored on well-known, public code hosting services [in line with GDS Service Manual guidance](https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable).
 
 ## GitHub
 
-New repositories for products and services live in the
-[Skills Funding Agency organisation](https://github.com/SkillsFundingAgency)
-on GitHub. New repositories must be created within the [Skills Funding Agency organisation](https://github.com/SkillsFundingAgency) organisation, whether they contain service production code or prototypes. Work created outside of the Skills Funding Agency organisation should be transferred into the Skills Funding Agency organisation at the earliest opportunity. [Guide to transferring a repository](https://help.github.com/en/articles/transferring-a-repository).
+Our current source-control platform is [GitHub](https://github.com/SkillsFundingAgency/) where we are part of the SkillsFundingAgency organisation. All new repositories for products and services must be created in the [Skills Funding Agency organisation](https://github.com/SkillsFundingAgency), this includes all service production code and prototypes. 
 
-You can use your personal GitHub account (but you should [add your Apprenticeship Service
-email address to your account](https://help.github.com/articles/adding-an-email-address-to-your-github-account/),
-and maybe [use that for notifications](https://help.github.com/articles/managing-notification-emails-for-organizations/)).
-Ask your delivery manager to request you being added to the Github organisation.
+> Any work created outside of the Skills Funding Agency organisation should be transferred into the Skills Funding Agency organisation at the earliest opportunity. [Guide to transferring a repository](https://help.github.com/en/articles/transferring-a-repository).
+
+It is accepted practice to access the SkillsFundingAgency GitHub organisation via personal GitHub accounts but before you can contribute to repositories in this organisation it is necessary to be granted the appropriate security role.
 
 ## Secrets and Sensitive Configuration
 
@@ -97,4 +93,3 @@ Optionally, adding build and analysis status badges can enhance the amount of in
 ## License
 *License name*
 </pre>
-
