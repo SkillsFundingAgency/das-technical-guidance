@@ -173,7 +173,7 @@ Another positive side-effects of using CQRS is that there are naturally less mer
 
 ### Managed Identities (MI)
 
-Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.
+Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.  This simplifies configuration which in turn reduces the number of app settings that need to be referenced in code and increases the reliability of the deployment process across multiple environments.  In addition by offloading authentication to Azure AD instead of relying on manually created secrets the security of the service's data will be enhanced.
 
 * Secretless configuration
 * Acquiring a bearer token for an API behind Azure AD authentication
