@@ -40,8 +40,7 @@ Once a branch is no longer needed it should be deleted, this helps keep the repo
 
 Repositories should be [clearly named]({{ '/standards/naming-things' | relative_url }}),
 and have an [appropriate licence]({{ '/standards/licencing-software-or-code' | relative_url }})
-and enough documentation that someone new can get started with the
-project.
+and enough documentation that someone new can get started with the project.
 
 ## Creating an Effective Readme
 
@@ -50,7 +49,7 @@ An effective and comprehensive Readme within a repository can help to simplify a
 An effective Readme should contain at least the following information:
 
 - An overview of the purpose of the code
-- All pre-requisites and dependencies will be identified
+- All pre-requisites and dependencies identified and listed
 - An explanation on how to get the code
 - An explanation on how to set-up and run the code, give examples with code snippets and images
 - The requirements that must be met for someone to start contributing, for instance
