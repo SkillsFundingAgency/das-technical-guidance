@@ -23,7 +23,7 @@ During development, settings files that are ignored by git - i.e. appsettings.De
 
 ## Code Branching
 
-Maintaining a consistent code branching strategy can help to ensure the development process is as smooth as possible and avoid many pitfalls when a team is  working on the same code-base.
+Maintaining a consistent code branching strategy can help to ensure the development process is as smooth as possible and avoid many pitfalls when a team is working on the same code-base.
 
 ### 1. Create a branch from master for each new piece of work
 When the work in the branch is complete create a pull request which can be reviewed. Local-only branches made from the feature branch can be used to split out the work further, these can then be re-integrated back into the feature branch before being pushed to the origin. When multiple people are working on the same feature, the Feature branch can be used as an integration point for those branches taken from it. 
