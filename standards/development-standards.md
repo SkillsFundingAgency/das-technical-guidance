@@ -13,6 +13,5 @@ The guide is split into the following sections.
 |Section|Description|
 |---|---|
 |[Aims and Objectives]({{ 'development_standards/aims' | relative_url }})|Describes the aims and objectives of standardising the approach to development across the service|
-|[Source Control]({{ 'development_standards/source-control' | relative_url }})|Describes the ways in which we should be using source control|
 |[Solution structure and layout]({{ 'development_standards/solution-structure' | relative_url }})|Describes how new application solutions should be structured|
 |[Development Patterns]({{ 'development_standards/patterns' | relative_url }})|Describes the development patterns that are currently in use|

@@ -17,7 +17,9 @@ It is accepted practice to access the SkillsFundingAgency GitHub organisation vi
 
 ## Secrets and Sensitive Configuration
 
-To ensure the safety and security of our systems; secrets, sensitive configuration and artefacts should not be pushed to public repositories. However this does not mean that private repositories are a good way to protect secrets, they are not. Secrets should be stored using technologies specifically designed for the task such as Azure Key Vaults, Secure Azure DevOps pipeline secret variables, etc...
+To ensure the safety and security of our systems; secrets, sensitive configuration and artefacts should not be pushed to public repositories. However this does not mean that private repositories are a good way to protect secrets, they are not. Secrets should be stored using technologies specifically designed for the task such as Azure Key Vaults, Secure Azure DevOps pipeline secret variables, etc... 
+
+During development, settings files that are ignored by git - i.e. appsettings.Development.json - may be a convenient way to store secrets without them being accidentally added to the repository.
 
 ## Code Branching
 
