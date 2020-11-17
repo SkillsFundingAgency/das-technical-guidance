@@ -64,7 +64,16 @@ By default, apps hosted on app services have data protection keys that are persi
 
 Separate deployment slots (Staging and Production) don't share a key ring, meaning the standard slot swapping deployment that takes place in releases would result in an app using Data Protection to not be able to decrypt stored data using the key ring inside the previous slot.
 
-To maintain zero-downtime releases for Apprenticeship Service applications, data protection keys should be persisted to the environment's Redis Cache, where the redis connection string and database number are in the application's configuration.
+Additionally, Data Protection exceptions are seen on apps that do not persist to Redis:
+
+| Log property name | Log property value  |
+|---|---|
+| Exception.type   | AntiforgeryValidationException  |
+| Exception.innerException.source  | Microsoft.AspNetCore.DataProtection  |
+| Exception.innerException.message  | The key {GUID} was not found in the key ring.  |
+
+
+To maintain zero-downtime releases for Apprenticeship Service applications and prevent other Data Protection exceptions, Data Protection keys should be persisted to the environment's Redis Cache, where the redis connection string and database number are in the application's configuration.
 
 #### Example
 
@@ -127,7 +136,7 @@ The following flow is applied:
 
 Logging to file, as configured in the NLog configuration, results in a storage exception such as `There is not enough space on the disk : 'D:\home\site\wwwroot\logs\app-name.YYYY-MM-DD.log'` due to a local cache limit of 1GB being reached.
 
-As Kibana is reliably available and checking logs on individual app services is impractical for debugging, only Redis should be logged to and not File.
+As Kibana is reliably available, checking logs on individual app services is impractical for debugging and to prevent the storage exceptions, only Redis should be logged to and not File.
 
 For local development, it is useful to log to File.
 
