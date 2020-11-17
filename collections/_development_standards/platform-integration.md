@@ -129,7 +129,7 @@ All applications use NLog to write logs to logging Redis Cache on Azure instance
 
 The following flow is applied:
 
-1. App Services use NLog to write to our Redis Cache on Azure instances.
+1. App Services use NLog to write to Redis Cache on Azure instances.
 1. Each Redis Cache will buffers the logs.
 1. Logstash indexes the logs from Redis Cache and performs data transformation and processing.
 1. Kibana is used to visualise the data in Elasticsearch.
