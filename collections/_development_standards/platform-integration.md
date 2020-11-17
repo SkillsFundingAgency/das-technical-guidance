@@ -64,7 +64,7 @@ By default, apps hosted on app services have data protection keys that are persi
 
 Separate deployment slots (Staging and Production) don't share a key ring, meaning the standard slot swapping deployment that takes place in releases would result in an app using Data Protection to not be able to decrypt stored data using the key ring inside the previous slot.
 
-Additionally, Data Protection exceptions are seen on apps that do not persist to Redis:
+Additionally, Data Protection exceptions are seen on apps that do not persist to Redis Cache on Azure instances:
 
 | Log property name | Log property value  |
 |---|---|
@@ -129,8 +129,8 @@ All applications use NLog to write logs to logging Redis Cache on Azure instance
 
 The following flow is applied:
 
-1. App Services use NLog to write to Redis Cache on Azure instances.
-1. Each Redis Cache will buffers the logs.
+1. App Services use NLog to write to Redis Caches.
+1. Each Redis Cache buffers the logs.
 1. Logstash indexes the logs from Redis Cache and performs data transformation and processing.
 1. Kibana is used to visualise the data in Elasticsearch.
 
