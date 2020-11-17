@@ -134,7 +134,7 @@ The following flow is applied:
 1. Logstash indexes the logs from Redis Cache and performs data transformation and processing.
 1. Kibana is used to visualise the data in Elasticsearch.
 
-Logging to file, as configured in the NLog configuration, results in a storage exception such as `There is not enough space on the disk : 'D:\home\site\wwwroot\logs\app-name.YYYY-MM-DD.log'` due to a local cache limit of 1GB being reached.
+Logging to File, as configured in the NLog configuration, results in a storage exception such as `There is not enough space on the disk : 'D:\home\site\wwwroot\logs\app-name.YYYY-MM-DD.log'` due to a local cache limit of 1GB being reached.
 
 As Kibana is reliably available, checking logs on individual app services is impractical for debugging and to prevent the storage exceptions, only Redis should be logged to and not File.
 
