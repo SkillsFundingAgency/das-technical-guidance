@@ -69,6 +69,8 @@ Use [Test-driven Development](https://en.wikipedia.org/wiki/Test-driven_developm
 ### 11. Create a useful README
 Each project should enable new users to get up-to-speed as quickly as possible. A comprehensive README should explain how a project should be set up, configured and run as well as give a background of the goals driving it. Rather than being a static document the README should evolve as the project evolves.
 
+See [Creating an Effective Readme]({{ 'standards/source-control#creating-an-effective-readme' | relative_url }})
+
 ## C#-Specific Principles
 
 ### 1. Follow the Microsoft coding standards

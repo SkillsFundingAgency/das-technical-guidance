@@ -1,5 +1,5 @@
 # Site settings
-title: Apprenticeship Service Working Practices
+title: Apprenticeship Service Technical Guidance
 email: dan.beavon@education.gov.uk
 description: > # this means to ignore newlines until "baseurl:"
   Working Practices
@@ -20,6 +20,9 @@ collections:
       output: true
   
   architecture:
+    output: true
+
+  development_standards:
     output: true
 
 defaults:

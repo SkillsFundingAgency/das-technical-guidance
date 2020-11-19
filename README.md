@@ -22,11 +22,15 @@ instead of [Middleman][].
 
 To build the site locally using Jekyll we can use the following Docker Command from the root git directory:
 
-```sudo docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build```
+Bash: ```sudo docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build```
+
+PowerShell: ```docker run --rm --volume="${PWD}:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build```
 
 to run the site locally from the root git directory we can use:
 
-```sudo docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:3.8 jekyll serve```
+Bash: ```sudo docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:3.8 jekyll serve```
+
+PowerShell: ```docker run --rm --volume="${PWD}:/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:3.8 jekyll serve```
 
 To navigate to the built website enter the following in your browser:
 
