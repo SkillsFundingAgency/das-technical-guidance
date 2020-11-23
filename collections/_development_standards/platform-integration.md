@@ -72,6 +72,7 @@ Additionally, Data Protection exceptions are seen on apps that do not persist to
 | Exception.innerException.source  | Microsoft.AspNetCore.DataProtection  |
 | Exception.innerException.message  | The key {GUID} was not found in the key ring.  |
 
+These exceptions correlate with users receiving an error page when signing in.
 
 To maintain zero-downtime releases for Apprenticeship Service applications and prevent other Data Protection exceptions, Data Protection keys should be persisted to the environment's Redis Cache, where the redis connection string and database number are in the application's configuration.
 
@@ -134,9 +135,16 @@ The following flow is applied:
 1. Logstash indexes the logs from Redis Cache and performs data transformation and processing.
 1. Kibana is used to visualise the data in Elasticsearch.
 
-Logging to File, as configured in the NLog configuration, results in a storage exception such as `There is not enough space on the disk : 'D:\home\site\wwwroot\logs\app-name.YYYY-MM-DD.log'` due to a local cache limit of 1GB being reached.
+Logging to File, as configured in the NLog configuration, results in a storage exception such as `There is not enough space on the disk : 'D:\home\site\wwwroot\logs\app-name.YYYY-MM-DD.log'` seen in a profiler trace due to a local cache limit of 1GB being reached.
 
-As Kibana is reliably available, checking logs on individual app services is impractical for debugging and to prevent the storage exceptions, only Redis should be logged to and not File.
+These exceptions correlate with users receiving 504 Gateway Timeout error pages.
+
+Only Redis should be logged to and not File as:
+* Kibana is reliably available.
+* Application Insights is the backup solution, Azure's [Application Insights SLA](https://azure.microsoft.com/en-us/support/legal/sla/application-insights/v1_2/) guarantees query availability will not fall below 99.9%.
+* Checking logs on individual app services is impractical for debugging.
+* High level Contributor permissions are needed to access the App Services' files, these permissions should be restricted.
+* Not logging to File prevents the storage exceptions.
 
 For local development, it is useful to log to File.
 
