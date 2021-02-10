@@ -13,6 +13,7 @@ The guide is split into the following sections.
 |Section|Description|
 |---|---|
 |[Aims and Objectives]({{ 'development_standards/aims' | relative_url }})|Describes the aims and objectives of standardising the approach to development across the service|
+|[New Solution considerations]({{ 'development_standards/new-solutions' | relative_url }})|What you should consider when creating new solutions|
 |[Solution structure and layout]({{ 'development_standards/solution-structure' | relative_url }})|Describes how new application solutions should be structured|
 |[Development Patterns]({{ 'development_standards/patterns' | relative_url }})|Describes the development patterns that are currently in use|
 |[Platform Integration]({{ 'development_standards/platform-integration' | relative_url }})|Describes the patterns that are currently in use for integrating with Azure resources|
