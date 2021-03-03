@@ -23,7 +23,7 @@ The core objective of this Quality Assurance (QA) strategy is to design a high l
 The technical testing approach to automation prioritises areas of User Interface (UI) and the Application Programming Interface (API) / Service Layer that deliver relevant coverage holistically across the product surface. The test automation includes creating tests for each User Story/ Use Case and developing the automation code for each test, executing and maintaining the framework.
 
 * **UI Automation:** The UI testing framework is implemented using a TDA (Technical Design Authority) approved DOTNET Core framework with Selenium via a standard C#/Spreflow project
-* **API Automation:** The API test automation is currently being planned, but no automation framework is in place. However, Manual API testing is carried usaing Postman, RestClient etc tools
+* **API Automation:** The API test automation is currently being planned, but no automation framework is in place. However, Manual API testing is carried using Postman, RestClient etc tools
 
 ## Testing Stages
 
