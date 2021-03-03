@@ -14,6 +14,10 @@ which covers service design more broadly.
 It is inspired by the [GDS Way](https://gds-way.cloudapps.digital) and the
 [Ministry of Justice Technical Guidance](https://ministryofjustice.github.io/technical-guidance/#moj-technical-guidance) and also the wider [DfE Dgital Technical Guidance](https://dfe-digital.github.io/technical-guidance/#dfe-digital-technical-guidance)
 
+## Creating solutions
+
+[New solution FAQ]({{ 'development_standards/new-solutions' | relative_url }})
+
 ## Standards
 
 {% assign standards = site.pages
