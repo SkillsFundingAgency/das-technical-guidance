@@ -69,7 +69,7 @@ public class ApiClient
     AccessToken = _azureServiceTokenProvider.GetAccessTokenAsync(AzureResource).Result,
 };
 ```
-As used in: https://github.com/SkillsFundingAgency/das-courses-api/blob/91459aadbf90ff7101022d49b008b18169968fca/src/SFA.DAS.Courses.Data/CoursesDataContext.cs
+As used in: [Courses API CoursesDataContext.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/91459aadbf90ff7101022d49b008b18169968fca/src/SFA.DAS.Courses.Data/CoursesDataContext.cs)
 
 An example of the database extension being added for the AppStart:
 ```csharp
@@ -97,7 +97,7 @@ public static class AddDatabaseExtension
 }
 ```
 
-As used in: https://github.com/SkillsFundingAgency/das-courses-api/blob/2c83a21b65bde54ee8ceed9d29c812880cf401bf/src/SFA.DAS.Courses.Api/AppStart/AddDatabaseExtension.cs
+As used in: [Courses API AddDatabaseExtension.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/2c83a21b65bde54ee8ceed9d29c812880cf401bf/src/SFA.DAS.Courses.Api/AppStart/AddDatabaseExtension.cs)
 
 #### References
 
