@@ -62,12 +62,33 @@ public class ApiClient
 Creating a SqlConnection:
 
 ```csharp
-public class ApiClient
- var connection = new SqlConnection
+public AppDataContext()
 {
-    ConnectionString = _configuration.ConnectionString,
-    AccessToken = _azureServiceTokenProvider.GetAccessTokenAsync(AzureResource).Result,
-};
+}
+
+public AppDataContext(DbContextOptions options) : base(options)
+{
+}
+
+public AppDataContext(IOptions<AppConfiguration> config, DbContextOptions options, AzureServiceTokenProvider azureServiceTokenProvider) :base(options)
+{
+    _configuration = config.Value;
+    _azureServiceTokenProvider = azureServiceTokenProvider;
+}  
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    if (_configuration == null || _azureServiceTokenProvider == null)
+    {
+        return;
+    }
+    
+    var connection = new SqlConnection
+    {
+        ConnectionString = _configuration.ConnectionString,
+        AccessToken = _azureServiceTokenProvider.GetAccessTokenAsync(AzureResource).Result,
+    };
+}
 ```
 As used in: [Courses API CoursesDataContext.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/91459aadbf90ff7101022d49b008b18169968fca/src/SFA.DAS.Courses.Data/CoursesDataContext.cs)
 
