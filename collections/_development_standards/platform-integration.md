@@ -10,15 +10,23 @@ Below are described the patterns currently in-use across the Service for integra
 
 ### Managed Identities (MI)
 
-Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.  This simplifies configuration which in turn reduces the number of app settings that need to be referenced in code and increases the reliability of the deployment process across multiple environments.  In addition by offloading authentication to Azure AD instead of relying on manually created secrets the security of the service's data will be enhanced.
+Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.  This has several key benefits:
+* Improved security - credentials don't exist so are not accessible to anyone
+* Applications won't experience expired secrets resulting in:
+  * Improved development/testing experience
+  * No management overhead on redeploying applications in order to renew secrets
+  * No risk of downtime due to expiring secrets
+* Simplified configuration to reference for applications
 
-* Secretless configuration
-* Acquiring a bearer token for an API behind Azure AD authentication
+Examples where Managed Identity Azure AD authentication should be used:
+* Acquiring a bearer token for an internal API behind Azure AD authentication
 * Connecting to a SQL database
+* Connecting to a Service Bus namepsace
 
-The ```Microsoft.Azure.Services.AppAuthentication``` library manages authentication automatically
 
-#### Example - Authenticating with another app service, eg internal API
+The [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) library manages authentication automatically
+
+#### Example - Acquiring a bearer token for an internal API behind Azure AD authentication:
 
 ```csharp
 public class ApiClient
@@ -48,6 +56,69 @@ public class ApiClient
     var response = await _httpClient.GetAsync("https://azurewebsites.net/resource/resourceid");
 }
 ```
+
+#### Example - Connecting to a SQL database:
+
+Creating a SqlConnection:
+
+```csharp
+public AppDataContext()
+{
+}
+
+public AppDataContext(DbContextOptions options) : base(options)
+{
+}
+
+public AppDataContext(IOptions<AppConfiguration> config, DbContextOptions options, AzureServiceTokenProvider azureServiceTokenProvider) :base(options)
+{
+    _configuration = config.Value;
+    _azureServiceTokenProvider = azureServiceTokenProvider;
+}  
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    if (_configuration == null || _azureServiceTokenProvider == null)
+    {
+        return;
+    }
+    
+    var connection = new SqlConnection
+    {
+        ConnectionString = _configuration.ConnectionString,
+        AccessToken = _azureServiceTokenProvider.GetAccessTokenAsync(AzureResource).Result,
+    };
+}
+```
+As used in: [Courses API CoursesDataContext.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/91459aadbf90ff7101022d49b008b18169968fca/src/SFA.DAS.Courses.Data/CoursesDataContext.cs)
+
+An example of the database extension being added for the AppStart:
+```csharp
+public static class AddDatabaseExtension
+{
+    public static void AddDatabaseRegistration(this IServiceCollection services, AppConfiguration config, string environmentName)
+    {
+        if (environmentName.Equals("DEV", StringComparison.CurrentCultureIgnoreCase))
+        {
+            services.AddDbContext<AppDataContext>(options => options.UseInMemoryDatabase("SFA.DAS.App"), ServiceLifetime.Transient);
+        }
+        else if (environmentName.Equals("LOCAL", StringComparison.CurrentCultureIgnoreCase))
+        {
+            services.AddDbContext<AppDataContext>(options=>options.UseSqlServer(config.ConnectionString),ServiceLifetime.Transient);
+        }
+        else
+        {
+            services.AddSingleton(new AzureServiceTokenProvider());
+            services.AddDbContext<AppDataContext>(ServiceLifetime.Transient);    
+        }
+
+        services.AddTransient<IAppDataContext, AppDataContext>(provider => provider.GetService<AppDataContext>());
+        services.AddTransient(provider => new Lazy<AppDataContext>(provider.GetService<AppDataContext>()));
+    }
+}
+```
+
+As used in: [Courses API AddDatabaseExtension.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/2c83a21b65bde54ee8ceed9d29c812880cf401bf/src/SFA.DAS.Courses.Api/AppStart/AddDatabaseExtension.cs)
 
 #### References
 
