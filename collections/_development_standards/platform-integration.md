@@ -4,11 +4,11 @@ title:  "Platform Integration"
 category: development_standards
 ---
 
-## Platform Integration
+# Platform Integration
 
 Below are described the patterns currently in-use across the Service for integrating applications with Azure resources.
 
-### Managed Identities (MI)
+## Managed Identities (MI)
 
 Using a managed identity allows an application to authenticate to any service that supports Azure AD authentication without having credentials.  This has several key benefits:
 * Improved security - credentials don't exist so are not accessible to anyone
@@ -26,40 +26,88 @@ Examples where Managed Identity Azure AD authentication should be used:
 
 The [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) library manages authentication automatically
 
+### Internal API communication
+
+The [SFA.DAS.Api.Common NuGet package](https://www.nuget.org/packages/SFA.DAS.Api.Common/) configured at https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.Api.Common is useful for API projects and adds some of the common components required such as Azure authentication via MI and healthcheck response writer etc.
+
+The below examples use the SFA.DAS.Api.Common NuGet package.
+
+#### Example - Enforcing Azure AD authentication for an internal API:
+
+```csharp
+public class Startup
+{
+    ...
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (!ConfigurationIsLocalOrDev())
+        {
+            var azureAdConfiguration = _configuration
+                .GetSection("AzureAd")
+                .Get<AzureActiveDirectoryConfiguration>();
+
+            var policies = new Dictionary<string, string>
+            {
+                {PolicyNames.Default, RoleNames.Default}
+            };
+
+            services.AddAuthentication(azureAdConfiguration, policies);
+        }
+
+        services
+            .AddMvc(o =>
+            {
+                o.Conventions.Add(new ApiExplorerGroupPerVersionConvention());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+    }
+    ...
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IIndexBuilder indexBuilder, ILogger<Startup> logger)
+    {
+        ...
+        app.UseAuthentication();
+        ...
+    }
+    ...
+}
+```
+As used in: [Courses API StartUp.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/9b72748417e74dc510266ad67f92b5fd844fbfb1/src/SFA.DAS.Courses.Api/Startup.cs)
+
 #### Example - Acquiring a bearer token for an internal API behind Azure AD authentication:
 
 ```csharp
-public class ApiClient
+public class InternalApiClient<T> : ApiClient<T>, IInternalApiClient<T> where T : IInternalApiConfiguration
 {
-    private readonly HttpClient _httpClient;
+    private readonly IAzureClientCredentialHelper _azureClientCredentialHelper;
 
-    public ApiClient(IHttpClientFactory httpClientFactory) {
-        _httpClient = httpClientFactory.CreateClient();
-    }
-
-    public async Task<string> GetAccessTokenAsync(string identifier)
+    public InternalApiClient(
+        IHttpClientFactory httpClientFactory,
+        T apiConfiguration,
+        IWebHostEnvironment hostingEnvironment,
+        IAzureClientCredentialHelper azureClientCredentialHelper) : base(httpClientFactory, apiConfiguration, hostingEnvironment)
     {
-        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-        var accessToken = await azureServiceTokenProvider.GetAccessTokenAsync(identifier);
-        
-        return accessToken;
+        _azureClientCredentialHelper = azureClientCredentialHelper;
     }
 
-    # Acquire a bearer token
-    var identifier = "https://tenant.onmicrosoft.com/das-env-api-as-ar" # IdentifierUri of Azure AD App registration
-    var accessToken = await GetAccessTokenAsync(identifier);
-
-    # Add the token as a header
-    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-    # Make an API call
-    var response = await _httpClient.GetAsync("https://azurewebsites.net/resource/resourceid");
+    protected override async Task AddAuthenticationHeader()
+    {
+        if (!HostingEnvironment.IsDevelopment())
+        {
+            var accessToken = await _azureClientCredentialHelper.GetAccessTokenAsync(Configuration.Identifier);
+            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        }
+    }
+    ...
 }
 ```
+As used in [Shared Outer API InternalApiClient.cs](https://github.com/SkillsFundingAgency/das-apim-endpoints/blob/4c8da6f2ab75c50d15f0e6d510eac4b2cb0ef792/src/SFA.DAS.SharedOuterApi/Infrastructure/InternalApiClient.cs)
 
-#### Example - Connecting to a SQL database:
+### Connecting to a SQL database:
 
-Creating a SqlConnection:
+#### Example - Creating a SqlConnection:
 
 ```csharp
 public AppDataContext()
@@ -120,14 +168,14 @@ public static class AddDatabaseExtension
 
 As used in: [Courses API AddDatabaseExtension.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/2c83a21b65bde54ee8ceed9d29c812880cf401bf/src/SFA.DAS.Courses.Api/AppStart/AddDatabaseExtension.cs)
 
-#### References
+### References
 
 * [Managed Identity Documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/)
 * [MI Overview - Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
 * [MI Obtain tokens for Azure resources - Microsoft](https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity?tabs=dotnet#asal)
 * [MI Connecting to a SQL database - Microsoft](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-connect-msi)
 
-### ASP.NET Core Data Protection
+## ASP.NET Core Data Protection
 
 Web applications often need to store security-sensitive data. The ASP.NET Core data protection stack is designed to serve as the long-term replacement for the `<machineKey>` element in ASP.NET 1.x - 4.x. One common use of Data Protection is the storing of cookies for apps using the standard ASP.NET Core cookie authentication.
 
@@ -147,7 +195,7 @@ These exceptions correlate with users receiving an error page when signing in.
 
 To maintain zero-downtime releases for Apprenticeship Service applications and prevent other Data Protection exceptions, Data Protection keys should be persisted to the environment's Redis Cache, where the redis connection string and database number are in the application's configuration.
 
-#### Example
+### Example
 
 ```csharp
 using Microsoft.AspNetCore.DataProtection;
@@ -189,13 +237,13 @@ namespace SFA.DAS.AppName.Web.Startup
 
 [Example](https://github.com/SkillsFundingAgency/das-employercommitments-v2/pull/137/files) of persisting data protection keys in an Apprenticeship Service app.
 
-#### References
+### References
 
 * [ASP.NET Core Data Protection overview](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction?view=aspnetcore-5.0)
 * [Configuring ASP.NET Core Data Protection](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1)
 * [Data Protection key management and lifetime in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/default-settings?view=aspnetcore-3.1)
 
-### Logging to Redis and not to File
+## Logging to Redis and not to File
 
 All applications use NLog to write logs to logging Redis Cache on Azure instances.
 
@@ -221,6 +269,6 @@ For local development, it is useful to log to File.
 
 [Example](https://github.com/SkillsFundingAgency/das-providercommitments/pull/176/files) of NLog configuration, with logging to File for develeopment mode and logging to Redis for non-development mode (running on Azure app services).
 
-#### References
+### References
 
 * [App Service local cache size limits](https://docs.microsoft.com/en-us/azure/app-service/overview-local-cache#how-the-local-cache-changes-the-behavior-of-app-service)
