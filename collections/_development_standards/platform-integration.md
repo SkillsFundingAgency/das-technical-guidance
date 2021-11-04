@@ -107,7 +107,7 @@ As used in [Shared Outer API InternalApiClient.cs](https://github.com/SkillsFund
 
 ### Connecting to a SQL database:
 
-#### Example - Creating a SqlConnection:
+#### Example - Creating a SqlConnection within a DbContext:
 
 ```csharp
 public AppDataContext()
@@ -140,7 +140,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 ```
 As used in: [Courses API CoursesDataContext.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/91459aadbf90ff7101022d49b008b18169968fca/src/SFA.DAS.Courses.Data/CoursesDataContext.cs)
 
-An example of the database extension being added for the AppStart:
+An example of the database extension being added for the AppStart when using the Microsoft ASP.NET Core Built-in IoC Container:
 ```csharp
 public static class AddDatabaseExtension
 {
@@ -167,6 +167,62 @@ public static class AddDatabaseExtension
 ```
 
 As used in: [Courses API AddDatabaseExtension.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/2c83a21b65bde54ee8ceed9d29c812880cf401bf/src/SFA.DAS.Courses.Api/AppStart/AddDatabaseExtension.cs)
+
+#### Example - Passing a SqlConnection into a DbContext:
+
+Sometimes there may be a need to access data outside of a DbContext e.g. when using Dapper, and additionaly data access may also be required in the same solution inside a DbContext; in which case a shared IDbConnection may be configured outside and then passed into the DbContext.
+
+```csharp
+private readonly IDbConnection _connection;
+
+public AppDataContext()
+{
+}
+
+public AppDataContext(IDbConnection connection, DbContextOptions<AssessorDbContext> options)
+    : base(options)
+{
+    _connection = connection;
+}
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    optionsBuilder.UseSqlServer(_connection as DbConnection, options =>
+         options.EnableRetryOnFailure(3));
+}
+
+```
+As used in: [Assessor API AssessorDbContext.cs](https://github.com/SkillsFundingAgency/das-assessor-service/blob/c2587b4055d45024a02ea24d85323980383f2cd7/src/SFA.DAS.AssessorService.Data/AssessorDbContext.cs)
+
+An example of the database extension being added for the AppStart when using StructureMap for DI:
+
+```csharp
+public static class DatabaseExtensions
+{
+    private const string AzureResource = "https://database.windows.net/";
+
+    public static void AddDatabaseRegistration(this ConfigurationExpression config, string environment, string sqlConnectionString)
+    {
+        config.For<IDbConnection>().Use($"Build IDbConnection", c => {
+            var azureServiceTokenProvider = new AzureServiceTokenProvider();
+            return environment.Equals("LOCAL", StringComparison.CurrentCultureIgnoreCase)
+                ? new SqlConnection(sqlConnectionString)
+                : new SqlConnection
+                {
+                    ConnectionString = sqlConnectionString,
+                    AccessToken = azureServiceTokenProvider.GetAccessTokenAsync(AzureResource).Result
+                };
+        });
+            
+        var option = new DbContextOptionsBuilder<AppDataContext>();
+        config.For<AppDataContext>().Use(c => new AppDataContext(c.GetInstance<IDbConnection>(), option.Options));
+    }
+}
+```
+
+As used in: [Assessor API AddDatabaseExtension.cs](https://github.com/SkillsFundingAgency/das-assessor-service/blob/c2587b4055d45024a02ea24d85323980383f2cd7/src/SFA.DAS.AssessorService.Application.Api/StartupConfiguration/DatabaseExtensions.cs)
+
+
 
 ### References
 
