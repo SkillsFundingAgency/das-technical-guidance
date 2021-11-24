@@ -34,7 +34,7 @@ PowerShell: ```docker run --rm --volume="${PWD}:/srv/jekyll" -p 4000:4000 -it je
 
 To navigate to the built website enter the following in your browser:
 
-```http://0.0.0.0:4000/```
+```http://0.0.0.0:4000/``` or ```http://localhost:4000/```
 
 
 ## Making changes
@@ -51,5 +51,5 @@ Make sure to make any changes in a branch, and to create a pull request for revi
 
 Because we're using GitHub Pages, any changes merged into the `master`
 branch will be published automatically. Every change should be reviewed
-in a pull request, no matter how minor, and we've enabled [branch
-protection][] to enforce this.
+in a pull request, no matter how minor, and we've enabled branch
+protection to enforce this.
