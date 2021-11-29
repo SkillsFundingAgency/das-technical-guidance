@@ -285,8 +285,10 @@ Adding health checks to the Startup class, they can be added to Startup extensio
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddHealthChecks()
-        .AddCheck<SomeHealthCheck>("Checks the health of something");
         //add health checks appropriate to the application here
+        .AddDbContextCheck<ApplicationDataContext>();
+        .AddCheck<NServiceBusHealthCheck>("Service Bus Health Check")
+        .AddCheck<ApiHealthCheck>("Check the health of some API");
 }
 
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
