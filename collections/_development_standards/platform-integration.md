@@ -272,3 +272,45 @@ For local development, it is useful to log to File.
 ### References
 
 * [App Service local cache size limits](https://docs.microsoft.com/en-us/azure/app-service/overview-local-cache#how-the-local-cache-changes-the-behavior-of-app-service)
+
+## ASP.NET Core Health Checks
+
+ASP.NET Core provides built in features to easily configure health check endpoints.  All apps should implement a basic health check with a /ping endpoint that establishes whether an app has started.  In addition, more sophisticated health checks can be implemented with a /health endpoint.
+
+The /ping endpoint will be used by the Application Gateway to establish whether the application is available, if it does not return a status code in the 200-399 range then the application will be marked as unhealthy and the Application Gateway will not route traffic to it.  By [default](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1#customize-the-http-status-code-1) Health Checks will return a 200 if the application is healthy.  An alert will be posted to the #das-alerts Slack channel in the event that a staus code outside the acceptable range is returned.
+
+### Example
+Adding health checks to the Startup class, they can be added to Startup extensions in a similar manner.  
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddHealthChecks()
+        //add health checks appropriate to the application here
+        .AddDbContextCheck<ApplicationDataContext>();
+        .AddCheck<NServiceBusHealthCheck>("Service Bus Health Check")
+        .AddCheck<ApiHealthCheck>("Check the health of some API");
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseHealthChecks("/ping", new HealthCheckOptions
+    {
+        //By returning false to the Predicate option we ensure that none of the health checks registered in ConfigureServices are ran for this endpoint
+        Predicate = (_) => false,
+        ResponseWriter = (context, report) =>
+        {
+            context.Response.ContentType = "application/json";
+            return context.Response.WriteAsync("");
+        }
+    });
+
+    app.UseHealthChecks("/health", new HealthCheckOptions
+    {
+        //configuration for a more complex response
+    });
+}
+```
+
+### References
+
+* [Health checks in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1)
