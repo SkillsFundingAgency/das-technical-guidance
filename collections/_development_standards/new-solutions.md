@@ -10,7 +10,7 @@ Whilst the whole of the Technical Guidance is here to provide you with assistanc
 
 ### 1. Which .Net version should I use?
 
-New solutions should use the latest long-term support (LTS) version available at the time, so long as standards and technical guidance has already been developed and agreed on. Any deviation from an LTS version should only be made where a feature is only available in the newer version that is essential to deliver required functionality.
+New solutions should use the latest long-term support (LTS) version available at the time, as long as standards and technical guidance have already been developed and agreed upon. Any deviation from an LTS version should only be made where a feature is only available in the newer version that is essential to deliver required functionality.
 
 The version used also needs to be supported by our build servers so a check-in with the DevOps team before starting is always useful.
 
