@@ -12,7 +12,7 @@ It complements the [Service Manual](https://www.gov.uk/service-manual) and its
 which covers service design more broadly.
 
 It is inspired by the [GDS Way](https://gds-way.cloudapps.digital) and the
-[Ministry of Justice Technical Guidance](https://ministryofjustice.github.io/technical-guidance/#moj-technical-guidance) and also the wider [DfE Dgital Technical Guidance](https://dfe-digital.github.io/technical-guidance/#dfe-digital-technical-guidance)
+[Ministry of Justice Technical Guidance](https://ministryofjustice.github.io/technical-guidance/#moj-technical-guidance) and also the wider [DfE Digital Technical Guidance](https://dfe-digital.github.io/technical-guidance/#dfe-digital-technical-guidance)
 
 ## Creating solutions
 
