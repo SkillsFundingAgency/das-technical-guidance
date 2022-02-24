@@ -14,6 +14,28 @@ Code reviews are an essential part of the development process and must be carrie
 * Give **constructive** feedback
 * Consider including non-developers in the review process, they may pick up different issues
 * Do not merge code when there are unresolved comments or requests for change
-* * Code merging in the main is a responsibility of the Quality Assurance team and will be performed after review from the Product Owner
+  * Code merging in the main is a responsibility of the Quality Assurance team and will be performed after review from the Product Owner
 
 [The GDS Way - Code Reviews](http://gds-way.cloudapps.digital/manuals/code-review-guidelines.html)
+
+## Using static code analysis during reviews
+
+Reviewers are advised to make use of the department's chosen [static code analysis](/development/static-code-analysis) tools (SonarCloud) to review the quality of the code and take remedial action where necessary.
+
+- Static code analysis occurs automatically when a pull request is raised and is viewable on the 'check' tab for that pull request in GitHub.
+- Reviewers should examine the output of the check to determine:
+  - If the code has any vulnerabilities.
+  - If the code has any 'code smells' (potential bugs or exploits).
+  - If the code has sufficient test coverage.
+  - If the code has a high percentage of duplication.
+- A check will pass or fail based on a range of criteria. For example:
+  - Test coverage within the required tolerance.[^1]
+  - Code duplication within the required tolerance.[^1]
+  - A sufficient security rating.[^1]
+  - A sufficient maintainability rating.[^1]
+  - A sufficient reliability rating.[^1]
+- Any failures should be investigated and, where possible, rectified.
+  - Where a failure is not (or cannot be) rectified, but the release is still intended to be approved and merged, the reviewer should document the justification and, where necessary, escalate to their lead developer or developer clan lead. Unresolved issues should be considered tech debt for which the team is responsible.
+- A pull request with a failed check cannot be merged unless it has at least one approval.
+
+[^1]: Note that the values for each of the requires criteria are subject to change and may vary between projects. Please see the check statistics for the project in question for specific requirements.
