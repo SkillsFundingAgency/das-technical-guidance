@@ -47,14 +47,14 @@ Note that there is no one prescribed structure for any given solution, regardles
 #### Solution
 Wherever possible, solutions should:
 * Adopt the naming convention SFA.DAS.{SolutionName} (where {SolutionName} is a meaningful name relevant to the piece of work this solution is for).
-  * Note that in any of the project suggested below, the * in the project name should be the same as the solution name.
+  * Note that in any of the projects suggested below, the * in the project name should be the same as the solution name.
 * Have a single responsibility. Where a solution requires a website and an API, for example, each should be built in separate solutions.
 * Have its own repo in GitHub.
 
 Solutions can contain any of the below projects. Only projects that are relevant to the work being completed should be included.
 
-#### API projects
-Where you have an API, use these projects to configure your endpoints. THe core logic should be in the separate Application project.
+##### API projects
+Where you have an API, use these projects to configure your endpoints. The core logic should be in the separate ***Application*** project.
 ```
 SFA.DAS.*.Api
 SFA.DAS.*.Api.AcceptanceTests
@@ -75,54 +75,54 @@ SFA.DAS.*.Commands
 SFA.DAS.*.Commands.UnitTests
 ```
 
-#### Data projects
+##### Data projects
 Use this project for classes that implement the repository pattern for data access. This uses abstract methods to access or modify data without having a direct reliance on an actual database.
 ```
 SFA.DAS.*.Data
 SFA.DAS.*.Data.UnitTests
 ```
 
-#### Database projects
+##### Database projects
 Use this project for database scripts (.sql) for things like creating tables and adding indexes for your solution.
 ```
 SFA.DAS.*.Database
 ```
 
-#### Domain projects
+##### Domain projects
 Use this project for your domain objects (models).
 ```
 SFA.DAS.*.Domain
 SFA.DAS.*.Domain.UnitTests
 ```
 
-#### Events projects
+##### Events projects
 Use these projects for any event based logic and associated handlers.
 ```
 SFA.DAS.*.Events
 SFA.DAS.*.Events.UnitTests
 ```
 
-#### Functions projects
+##### Functions projects
 Use these projects for Azure functions projects and durable functions. These will contain your orchestrators, triggers and activities.
 ```
 SFA.DAS.*.Functions
 SFA.DAS.*.Functions.UnitTests
 ```
-#### Infrastructure projects
+##### Infrastructure projects
 ?
 ```
 SFA.DAS.*.Infrastructure
 SFA.DAS.*.Infrastructure.UnitTests
 ```
 
-#### Jobs projects
+##### Jobs projects
 Use these projects for any scheduled tasks that need to run on a server.
 ```
 SFA.DAS.*.Jobs
 SFA.DAS.*.Jobs.UnitTests
 ```
 
-#### Mock projects
+##### Mock projects
 Use these projects to create mock instances for use when testing your applications.
 ```
 SFA.DAS.*.MockServer
@@ -135,7 +135,7 @@ SFA.DAS.*.Queries
 SFA.DAS.*.Queries.UnitTests
 ```
 
-#### Web projects
+##### Web projects
 Web projects are used for applications that have a web-based user interface. These projects typically follow the MVC pattern.
 ```
 SFA.DAS.*.Web
