@@ -57,8 +57,8 @@ Solutions can contain any of the below projects. Only projects that are relevant
 Where you have an API, use these projects to configure your endpoints. THe core logic should be in the separate Application project.
 ```
 SFA.DAS.*.Api
-SFA.DAS.*.AcceptanceTests
-SFA.DAS.*.UnitTests
+SFA.DAS.*.Api.AcceptanceTests
+SFA.DAS.*.Api.UnitTests
 ```
 
 ##### Application projects
