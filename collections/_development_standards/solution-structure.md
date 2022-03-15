@@ -74,13 +74,18 @@ Use these projects for your CQRS pattern commands (add/update/delete data).
 SFA.DAS.*.Commands
 SFA.DAS.*.Commands.UnitTests
 ```
+Try to organise your commands in individual folders. Each folder should contain:
+* Your command.
+* Your handler.
+* Your command validator.
 
 ##### Data projects
-Use this project for classes that implement the repository pattern for data access. This uses abstract methods to access or modify data without having a direct reliance on an actual database.
+Use this project for classes that implement the repository pattern for data access.
 ```
 SFA.DAS.*.Data
 SFA.DAS.*.Data.UnitTests
 ```
+The repository pattern uses abstract methods to access or modify data without having a direct reliance on an actual database. You should create one file per repository, with each file containing all the expected actions that can be performed on that repository.
 
 ##### Database projects
 Use this project for database scripts (.sql) for things like creating tables and adding indexes for your solution.
@@ -94,6 +99,9 @@ Use this project for your domain objects (models).
 SFA.DAS.*.Domain
 SFA.DAS.*.Domain.UnitTests
 ```
+Try to organise your models into logical groupings. For example, if you have a number of models related to an 'account', create an account folder and put those models in there, separate from the models used for another element of your application.
+
+This project can also contain interfaces for any methods that may be associated with your models.
 
 ##### Events projects
 Use these projects for any event based logic and associated handlers.
@@ -134,6 +142,10 @@ Use these projects for your CQRS pattern queries (data retrieval).
 SFA.DAS.*.Queries
 SFA.DAS.*.Queries.UnitTests
 ```
+Try to organise your queries in individual folders. Each folder should contain:
+* Your query handler.
+* Your query request type.
+* Your query response type.
 
 ##### Web projects
 Web projects are used for applications that have a web-based user interface. These projects typically follow the MVC pattern.
