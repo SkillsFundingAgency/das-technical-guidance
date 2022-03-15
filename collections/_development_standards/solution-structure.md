@@ -54,7 +54,7 @@ Wherever possible, solutions should:
 Solutions can contain any of the below projects. Only projects that are relevant to the work being completed should be included.
 
 ##### API projects
-Where you have an API, use these projects to configure your endpoints. The core logic should be in the separate ***Application*** project.
+Where you have an API, use these projects to configure your endpoints. The core logic should be in the separate ```Application``` project.
 ```
 SFA.DAS.*.Api
 SFA.DAS.*.Api.AcceptanceTests
