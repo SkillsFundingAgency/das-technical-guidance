@@ -48,7 +48,7 @@ Note that there is no one prescribed structure for any given solution, regardles
 Wherever possible, solutions should:
 * Adopt the naming convention SFA.DAS.{SolutionName} (where {SolutionName} is a meaningful name relevant to the piece of work this solution is for).
   * Note that in any of the projects suggested below, the * in the project name should be the same as the solution name.
-* Have a single responsibility. Where a solution requires a website and an API, for example, each should be built in separate solutions.
+* Have a single responsibility.
 * Have its own repo in GitHub.
 
 Solutions can contain any of the below projects. Only projects that are relevant to the work being completed should be included.
@@ -61,12 +61,20 @@ SFA.DAS.*.Api.AcceptanceTests
 SFA.DAS.*.Api.UnitTests
 ```
 
+API projects should contain all of the logic to handle the requests and responses for the included endpoints. This can include:
+* Controllers that receive and route requests and return reponses.
+* Request and response types.
+
 ##### Application projects
 Use these projects for your application's core logic.
 ```
 SFA.DAS.*.Application
 SFA.DAS.*.Application.UnitTests
 ```
+
+The logic will vary from one application to the next, but examples of things an application project might include are:
+* Calls to repositories in the solutions ```Data``` project.
+* CQRS calls to ```Commands``` and/or ```Queries```.
 
 ##### Commands projects
 Use these projects for your CQRS pattern commands (add/update/delete data).
@@ -148,11 +156,12 @@ Try to organise your queries in individual folders. Each folder should contain:
 * Your query response type.
 
 ##### Web projects
-Web projects are used for applications that have a web-based user interface. These projects typically follow the MVC pattern.
+Web projects are used for applications that have a web-based user interface.
 ```
 SFA.DAS.*.Web
 SFA.DAS.*.Web.AcceptanceTests
 SFA.DAS.*.Web.UnitTests
 ```
+Web projects should follow the MVC design pattern.
 
 The [das-reservations](https://github.com/SkillsFundingAgency/das-reservations) codebase is a great example of how to structure an Apprenticeship Service codebase
