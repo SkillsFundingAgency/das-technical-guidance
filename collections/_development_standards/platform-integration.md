@@ -24,7 +24,7 @@ Examples where Managed Identity Azure AD authentication should be used:
 * Connecting to a Service Bus namepsace
 
 
-The [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) library manages authentication automatically
+The [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/) (Previously Microsoft.Azure.Services.AppAuthentication) library manages authentication automatically.
 
 ### Internal API communication
 
@@ -110,8 +110,7 @@ As used in [Shared Outer API InternalApiClient.cs](https://github.com/SkillsFund
 To connect to a SQL database you can use AzureServiceTokenProvider to 
 simply request access tokens for your Azure clients, like the below 
 examples, however the AzureServiceTokenProvider is now considered 
-legacy (but not currently deprecated) and is [no longer recommended for use](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/app-auth-migration) so if you are developing a new application you should consider 
-using the [Azure.Identity client library](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) instead.
+legacy (but not currently deprecated) and is [no longer recommended for use](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/app-auth-migration) so if you are developing a new application you should use the [Azure.Identity client library](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) instead.
 
 
 #### Example - Creating a SqlConnection within a DbContext:
