@@ -10,11 +10,7 @@ category: development_standards
 
 The [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) was proposed by Jeffrey Palermo in 2008 to produce more maintainable applications by emphasizing the separation of concerns throughout a system. Similar to [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) it forces the externalization of infrastructure, the use of interfaces for behaviour contracts and describing dependencies that only "flow" in one direction, toward the centre and the Domain Model. In the Onion architecture the edges of the onion are where the most change is likely to happen and is where the UI, Tests and Infrastructure is found. 
 
-![](images/OnionArchitecture.png)
-
 Onion Architecture is in contrast to a layered architecture where layers are coupled to the one below them and potentially to various infrastructure concerns.
-
-![](images/LayeredArchitecture.png)
 
 Core Concepts:
 
@@ -73,8 +69,8 @@ SFA.DAS.*.Application.UnitTests
 ```
 
 The logic will vary from one application to the next, but examples of things an application project might include are:
-* Calls to repositories in the solutions ```Data``` project.
-* CQRS calls to ```Commands``` and/or ```Queries```.
+* Calls to repositories in the solution's ```Data``` project.
+* CQRS calls to handlers in the solution's ```Commands``` and/or ```Queries``` projects.
 
 ##### Commands projects
 Use these projects for your CQRS pattern commands (add/update/delete data).
@@ -102,7 +98,7 @@ SFA.DAS.*.Database
 ```
 
 ##### Domain projects
-Use this project for your domain objects (models).
+Use this project for your domain objects (models) and interfaces. As the project at the heart of the onion architecture pattern, this should contain all of the enterprise level objects for your solution.
 ```
 SFA.DAS.*.Domain
 SFA.DAS.*.Domain.UnitTests
@@ -117,6 +113,7 @@ Use these projects for any event based logic and associated handlers.
 SFA.DAS.*.Events
 SFA.DAS.*.Events.UnitTests
 ```
+Events will often make calls to repositories in the solution's ```Data``` project, or ```Commands``` or ```Queries``` projects in order to update data when an subscribed event is triggered.
 
 ##### Functions projects
 Use these projects for Azure functions projects and durable functions. These will contain your orchestrators, triggers and activities.
@@ -124,8 +121,9 @@ Use these projects for Azure functions projects and durable functions. These wil
 SFA.DAS.*.Functions
 SFA.DAS.*.Functions.UnitTests
 ```
+
 ##### Infrastructure projects
-?
+Infrastructure can vary wildly from one solution to the next, both in terms of content and scope. Often it will be used to store configuration information.
 ```
 SFA.DAS.*.Infrastructure
 SFA.DAS.*.Infrastructure.UnitTests
