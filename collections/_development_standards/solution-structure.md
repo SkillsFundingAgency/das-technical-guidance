@@ -44,7 +44,7 @@ Note that there is no one prescribed structure for any given solution, regardles
 Wherever possible, solutions should:
 * Adopt the naming convention ```SFA.DAS.{SolutionName}``` (where {SolutionName} is a meaningful name relevant to the piece of work this solution is for).
   * Note that in any of the projects suggested below, the ```*``` in the project name should be the same as the solution name.
-* Have a single responsibility.
+* Have a single application (e.g. a website, an API, etc.).
 * Have its own repo in GitHub.
 
 Solutions can contain any of the below projects. Only projects that are relevant to the work being completed should be included.
