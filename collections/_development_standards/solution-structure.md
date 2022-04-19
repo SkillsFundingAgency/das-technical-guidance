@@ -8,19 +8,19 @@ category: development_standards
 
 ### Onion architecture
 
-The [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) was proposed by Jeffrey Palermo in 2008 to produce more maintainable applications by emphasizing the separation of concerns throughout a system. Similar to [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) it forces the externalization of infrastructure, the use of interfaces for behaviour contracts and describing dependencies that only "flow" in one direction, toward the centre and the Domain Model. In the Onion architecture the edges of the onion are where the most change is likely to happen and is where the UI, Tests and Infrastructure is found. 
+[Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) was proposed by Jeffrey Palermo in 2008 to produce more maintainable applications by emphasising the separation of concerns throughout a system. Similar to [Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)), it forces the externalisation of infrastructure, the use of interfaces for behaviour contracts and describing dependencies that only "flow" in one direction: toward the centre and the Domain Model. In onion architecture, the edges of the onion are where the most change is likely to happen and is where the UI, tests and infrastructure is found. 
 
-Onion Architecture is in contrast to a layered architecture where layers are coupled to the one below them and potentially to various infrastructure concerns.
+Onion architecture is in contrast to a layered architecture where layers are coupled to the one below them and potentially to various infrastructure concerns.
 
-Core Concepts:
+#### Core concepts
 
-* It emphasizes the use of interfaces for behaviour contracts, and it forces the externalisation of infrastructure
-* Helps to decouple system dependencies by stating that all code can depend on layers more central, but code cannot depend on layers further out from the core
-* The first layer around the Domain Model is typically where we would find interfaces that provide object saving and retrieving behaviour, called repository interfaces
-* Object saving behaviour is *not* in the application core, only the interface is in the application core
-* On the edges we see UI, Infrastructure, and Tests
+* It emphasises the use of interfaces for behaviour contracts, and forces the externalisation of infrastructure.
+* It helps to decouple system dependencies by stating that all code can depend on layers more central, but code cannot depend on layers further out from the core.
+* The first layer around the Domain Model is typically where we would find interfaces that provide object saving and retrieving behaviour, called repository interfaces.
+* Object saving behaviour is *not* in the application core. Only the interface is in the application core.
+* On the edges we see UI, infrastructure, and tests.
 
-Limitations:
+#### Limitations
 
 * It is appropriate for long-lived business applications as well as applications with complex behaviour
 * Relies heavily on the Dependency Inversion principle
@@ -42,8 +42,8 @@ Note that there is no one prescribed structure for any given solution, regardles
 
 #### Solution
 Wherever possible, solutions should:
-* Adopt the naming convention SFA.DAS.{SolutionName} (where {SolutionName} is a meaningful name relevant to the piece of work this solution is for).
-  * Note that in any of the projects suggested below, the * in the project name should be the same as the solution name.
+* Adopt the naming convention ```SFA.DAS.{SolutionName}``` (where {SolutionName} is a meaningful name relevant to the piece of work this solution is for).
+  * Note that in any of the projects suggested below, the ```*``` in the project name should be the same as the solution name.
 * Have a single responsibility.
 * Have its own repo in GitHub.
 
@@ -59,7 +59,7 @@ SFA.DAS.*.Api.UnitTests
 
 API projects should contain all of the logic to handle the requests and responses for the included endpoints. This can include:
 * Controllers that receive and route requests and return reponses.
-* Request and response types.
+* Request and response types that will be received or returned by each endpoint.
 
 ##### Application projects
 Use these projects for your application's core logic.
@@ -105,7 +105,7 @@ SFA.DAS.*.Domain.UnitTests
 ```
 Try to organise your models into logical groupings. For example, if you have a number of models related to an 'account', create an account folder and put those models in there, separate from the models used for another element of your application.
 
-This project can also contain interfaces for any methods that may be associated with your models.
+This project can also contain interfaces for any methods that may be associated with your models. The implementation of these interfaces will sit in a separate project (e.g. ```Application```).
 
 ##### Events projects
 Use these projects for any event based logic and associated handlers.
@@ -123,14 +123,20 @@ SFA.DAS.*.Functions.UnitTests
 ```
 
 ##### Infrastructure projects
-Infrastructure can vary wildly from one solution to the next, both in terms of content and scope. Often it will be used to store configuration information.
+Infrastructure can vary wildly from one solution to the next, both in terms of content and scope. Often an infrastructure project will be used to store configuration information.
 ```
 SFA.DAS.*.Infrastructure
 SFA.DAS.*.Infrastructure.UnitTests
 ```
+Examples of things infrastructure projects can contain are:
+* Clients
+* Configuration
+* Extensions
+* Helpers
+* Services
 
 ##### Jobs projects
-Use these projects for any scheduled tasks that need to run on a server.
+Use these projects for any scheduled tasks that need to run in an environment.
 ```
 SFA.DAS.*.Jobs
 SFA.DAS.*.Jobs.UnitTests
