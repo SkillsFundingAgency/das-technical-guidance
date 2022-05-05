@@ -56,24 +56,24 @@ SFA.DAS.*.Api
 SFA.DAS.*.Api.AcceptanceTests
 SFA.DAS.*.Api.UnitTests
 ```
-
 API projects should contain all of the logic to handle the requests and responses for the included endpoints. This can include:
-* Controllers that receive and route requests and return reponses.
+* Controllers that receive and route requests and return responses.
 * Request and response types that will be received or returned by each endpoint.
 
 ##### Application projects
-Use these projects for your application's core logic.
+Use these projects for your application's core logic as it applies to your domain objects.
 ```
 SFA.DAS.*.Application
 SFA.DAS.*.Application.UnitTests
 ```
+The content will vary from one application to the next, but examples of things an application project might include are:
+* Calls to repository interfaces in the solution's ```Data``` project.
+* CQS calls (where the ```Application``` project replaces separate ```Commands``` and/or ```Queries``` projects).
 
-The logic will vary from one application to the next, but examples of things an application project might include are:
-* Calls to repositories in the solution's ```Data``` project.
-* CQRS calls to handlers in the solution's ```Commands``` and/or ```Queries``` projects.
+In onion architecture, the application layer is not responsible for business logic. For example, the application logic may be concerned with retrieving data in a specific use case, but it would not be responsible for modifying that data based on business rules or practices as part of its retrieval.
 
 ##### Commands projects
-Use these projects for your CQRS pattern commands (add/update/delete data).
+Use these projects for your CQS pattern commands (add/update/delete data).
 ```
 SFA.DAS.*.Commands
 SFA.DAS.*.Commands.UnitTests
@@ -132,8 +132,13 @@ Examples of things infrastructure projects can contain are:
 * Clients
 * Configuration
 * Extensions
+* External APIs
+* Event listeners
 * Helpers
+* Repository implementations
 * Services
+
+Try to avoid using the infrastructure project as a dumping ground for orphan classes and logic. In onion architecture, infrastructure projects should be used to implement things like the repositories you constructed in other projects. If the code you write forms a core part of your application, it probably belongs in a different project type.
 
 ##### Jobs projects
 Use these projects for any scheduled tasks that need to run in an environment.
@@ -149,7 +154,7 @@ SFA.DAS.*.MockServer
 ```
 
 ##### Queries projects
-Use these projects for your CQRS pattern queries (data retrieval).
+Use these projects for your CQS pattern queries (data retrieval).
 ```
 SFA.DAS.*.Queries
 SFA.DAS.*.Queries.UnitTests
