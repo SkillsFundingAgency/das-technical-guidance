@@ -103,7 +103,7 @@ Use this project for your domain objects (models) and interfaces. As the project
 SFA.DAS.*.Domain
 SFA.DAS.*.Domain.UnitTests
 ```
-Try to organise your models into logical groupings. For example, if you have a number of models related to an 'account', create an account folder and put those models in there, separate from the models used for another element of your application.
+Try to organise your models into aggregate roots. For example, if you have a number of models related to an 'account', create an account folder and put those models in there, separate from the models used for another element of your application.
 
 This project can also contain interfaces for any methods that may be associated with your models. The implementation of these interfaces will sit in a separate project (e.g. ```Application```).
 
