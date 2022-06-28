@@ -57,5 +57,10 @@ properties:
         qt-uri-protocols: ["https"]
     }
   }
+  schema: {
+    type: "string", 
+    format: "uri", 
+    qt-uri-protocols: ["https"]
+  }
 
 
