@@ -1,0 +1,66 @@
+type: object
+properties:
+  kind:
+    type: "array"
+    items: 
+      type: "string"
+      enum: ["frontend", "api", "worker","database","function","durable function"]
+  team:
+    type: "string"
+  businessApplication: {
+    type: "string",
+    enum: ["Employer Account"     
+,"Employer Finance"
+,"Employer Portal"
+,"Employer Login"
+,"Provider Portal"
+,"Provider Registration"
+,"Find Apprenticeship Training"
+,"Apprenticeship Shared APIs"
+,"Recruit An Apprentice"
+,"Find An Apprenticeship"
+,"Aggregated Employer Demand"
+,"Register of Apprenticehip Training Provider"
+,"Course Management"
+,"Levy Forecast"
+,"Levy Transfers"
+,"Support Suite"
+,"Reservations"
+,"Commitments"
+,"Provider Permissions"
+,"Apprentice products portal"
+,"Public sector reporting"
+,"Campagins"
+,"Employer Payments"
+,"AS Provider Payments"
+,"Simplified Provider Payments"
+,"Employment Check"
+,"Apprentice Feedback"
+,"End Point Assessment Organisations (EPAO) Registration"
+,"End Point Assessment Organisations (EPAO) Certification"
+,"Employer Feedback"
+,"Business Reporting Data"
+,"Register of employers acting as agencies"]
+  }
+  features: {
+    type: "array",
+    items: {
+      type: "string"
+    }
+  }
+ 
+  links: {
+    type: "array",
+    items: {
+      type: "string",
+      format: "uri",
+        qt-uri-protocols: ["https"]
+    }
+  }
+  schema: {
+    type: "string", 
+    format: "uri", 
+    qt-uri-protocols: ["https"]
+  }
+
+
