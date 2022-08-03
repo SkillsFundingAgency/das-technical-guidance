@@ -49,9 +49,9 @@ Wherever possible, solutions should:
 
 Solutions can contain any of the below projects. Only projects that are relevant to the work being completed should be included.
 
-Projects should take the naming convention '''SFA.DAS.{SolutionName}.{ProjectName}'''. Namespaces should also retain these prefixes.
+Projects should take the naming convention ```SFA.DAS.{SolutionName}.{ProjectName}```. Namespaces should also retain these prefixes.
 
-Where projects are contained within folders within a solution, they can adopt the naming convention of '''{ProjectName}''' (minus the additional prefixes and solution name). This avoids situations where folders within solutions and projects with very long names hit the upper limit for name lengths on Windows devices.
+Where projects are contained within folders within a solution, they can adopt the naming convention of ```{ProjectName}``` (minus the additional prefixes and solution name). This avoids situations where folders within solutions and projects with very long names hit the upper limit for name lengths on Windows devices.
 
 ##### API projects
 Where you have an API, use these projects to configure your endpoints. The core logic should be in the separate ```Application``` project.
