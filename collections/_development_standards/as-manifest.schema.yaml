@@ -28,9 +28,9 @@ properties:
 ,"Reservations"
 ,"Commitments"
 ,"Provider Permissions"
-,"Apprentice products portal"
-,"Public sector reporting"
-,"Campagins"
+,"Apprentice Products Portal"
+,"Public Sector Reporting"
+,"Campaigns"
 ,"Employer Payments"
 ,"AS Provider Payments"
 ,"Simplified Provider Payments"
@@ -40,7 +40,7 @@ properties:
 ,"End Point Assessment Organisations (EPAO) Certification"
 ,"Employer Feedback"
 ,"Business Reporting Data"
-,"Register of employers acting as agencies"
+,"Register of Employers Acting As Agencies"
 ,"Platform Tooling"]
   }
   features: {
