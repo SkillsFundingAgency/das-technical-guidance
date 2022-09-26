@@ -2,14 +2,14 @@ type: object
 properties:
   kind:
     type: "array"
-    items: 
+    items:
       type: "string"
-      enum: ["frontend", "api", "worker","database","function","durable function"]
+      enum: ["frontend", "api", "worker","database","function","durable function","tooling"]
   team:
     type: "string"
   businessApplication: {
     type: "string",
-    enum: ["Employer Account"     
+    enum: ["Employer Account"
 ,"Employer Finance"
 ,"Employer Portal"
 ,"Employer Login"
@@ -40,7 +40,8 @@ properties:
 ,"End Point Assessment Organisations (EPAO) Certification"
 ,"Employer Feedback"
 ,"Business Reporting Data"
-,"Register of employers acting as agencies"]
+,"Register of employers acting as agencies"
+,"Platform Tooling"]
   }
   features: {
     type: "array",
@@ -48,7 +49,7 @@ properties:
       type: "string"
     }
   }
- 
+
   links: {
     type: "array",
     items: {
@@ -58,9 +59,7 @@ properties:
     }
   }
   schema: {
-    type: "string", 
-    format: "uri", 
+    type: "string",
+    format: "uri",
     qt-uri-protocols: ["https"]
   }
-
-
