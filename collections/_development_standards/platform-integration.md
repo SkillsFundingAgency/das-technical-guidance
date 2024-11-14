@@ -86,18 +86,17 @@ public class InternalApiClient<T> : ApiClient<T>, IInternalApiClient<T> where T 
     public InternalApiClient(
         IHttpClientFactory httpClientFactory,
         T apiConfiguration,
-        IWebHostEnvironment hostingEnvironment,
-        IAzureClientCredentialHelper azureClientCredentialHelper) : base(httpClientFactory, apiConfiguration, hostingEnvironment)
+        IAzureClientCredentialHelper azureClientCredentialHelper) : base(httpClientFactory, apiConfiguration)
     {
         _azureClientCredentialHelper = azureClientCredentialHelper;
     }
 
-    protected override async Task AddAuthenticationHeader()
+    protected override async Task AddAuthenticationHeader(HttpRequestMessage httpRequestMessage)
     {
-        if (!HostingEnvironment.IsDevelopment())
+        if (!string.IsNullOrEmpty(Configuration.Identifier))
         {
             var accessToken = await _azureClientCredentialHelper.GetAccessTokenAsync(Configuration.Identifier);
-            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
     }
     ...
@@ -107,11 +106,13 @@ As used in [Shared Outer API InternalApiClient.cs](https://github.com/SkillsFund
 
 ### Connecting to a SQL database:
 
-To connect to a SQL database you can use AzureServiceTokenProvider to 
-simply request access tokens for your Azure clients, like the below 
-examples, however the AzureServiceTokenProvider is now considered 
-legacy (but not currently deprecated) and is [no longer recommended for use](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/app-auth-migration) so if you are developing a new application you should use the [Azure.Identity client library](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) instead.
+To connect to a SQL database you can use a connection string specifying the authentication method as Active Directory Default.
 
+```
+Server={SERVER_NAME};Initial Catalog={DATABASE_NAME};Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Default;
+```
+
+This will then connect using Managed Identity when deployed
 
 #### Example - Creating a SqlConnection within a DbContext:
 
@@ -124,27 +125,20 @@ public AppDataContext(DbContextOptions options) : base(options)
 {
 }
 
-public AppDataContext(IOptions<AppConfiguration> config, DbContextOptions options, AzureServiceTokenProvider azureServiceTokenProvider) :base(options)
+public AppDataContext(IOptions<AppConfiguration> config, DbContextOptions options) :base(options)
 {
     _configuration = config.Value;
-    _azureServiceTokenProvider = azureServiceTokenProvider;
 }  
 
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 {
-    if (_configuration == null || _azureServiceTokenProvider == null)
-    {
-        return;
-    }
-    
     var connection = new SqlConnection
     {
         ConnectionString = _configuration.ConnectionString,
-        AccessToken = _azureServiceTokenProvider.GetAccessTokenAsync(AzureResource).Result,
     };
 }
 ```
-As used in: [Courses API CoursesDataContext.cs](https://github.com/SkillsFundingAgency/das-courses-api/blob/91459aadbf90ff7101022d49b008b18169968fca/src/SFA.DAS.Courses.Data/CoursesDataContext.cs)
+As used in: [Candidate API CandidateDataContext.cs](https://github.com/SkillsFundingAgency/das-candidate-account-api/blob/main/src/SFA.DAS.CandidateAccount.Data/CandidateAccountDataContext.cs)
 
 An example of the database extension being added for the AppStart when using the Microsoft ASP.NET Core Built-in IoC Container:
 ```csharp
@@ -156,14 +150,9 @@ public static class AddDatabaseExtension
         {
             services.AddDbContext<AppDataContext>(options => options.UseInMemoryDatabase("SFA.DAS.App"), ServiceLifetime.Transient);
         }
-        else if (environmentName.Equals("LOCAL", StringComparison.CurrentCultureIgnoreCase))
-        {
-            services.AddDbContext<AppDataContext>(options=>options.UseSqlServer(config.ConnectionString),ServiceLifetime.Transient);
-        }
         else
         {
-            services.AddSingleton(new AzureServiceTokenProvider());
-            services.AddDbContext<AppDataContext>(ServiceLifetime.Transient);    
+            services.AddDbContext<AppDataContext>(ServiceLifetime.Transient);
         }
 
         services.AddTransient<IAppDataContext, AppDataContext>(provider => provider.GetService<AppDataContext>());
